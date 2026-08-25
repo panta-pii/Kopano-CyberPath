@@ -20,12 +20,11 @@
 
     body {
       font-family: 'Inter', 'Playfair Display', serif;
-      background: #fcfaf7;  /* warm white */
+      background: #fcfaf7;
       color: #1e1a16;
       line-height: 1.6;
     }
 
-    /* luxury gold palette */
     :root {
       --gold: #c9a23d;
       --gold-light: #e8d5a3;
@@ -36,18 +35,10 @@
       --charcoal: #1e1a16;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
 
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* ---------- BUTTONS (gold) ---------- */
+    /* ---------- BUTTONS ---------- */
     .btn {
       display: inline-block;
       background: var(--gold);
@@ -64,32 +55,25 @@
       cursor: pointer;
       font-family: 'Inter', sans-serif;
     }
-
     .btn:hover {
       background: transparent;
       color: var(--gold);
       border-color: var(--gold);
       box-shadow: 0 8px 30px rgba(201, 162, 61, 0.15);
     }
-
     .btn-outline {
       background: transparent;
       color: var(--gold);
       border: 2px solid var(--gold);
       box-shadow: none;
     }
-
     .btn-outline:hover {
       background: var(--gold);
       color: #1e1a16;
     }
+    .btn-sm { padding: 8px 24px; font-size: 0.8rem; }
 
-    .btn-sm {
-      padding: 8px 24px;
-      font-size: 0.8rem;
-    }
-
-    /* ---------- HEADER / NAV (white + gold accents) ---------- */
+    /* ---------- HEADER ---------- */
     header {
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(4px);
@@ -99,27 +83,24 @@
       z-index: 1000;
       padding: 14px 0;
     }
-
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
-
     .logo-area {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-
     .logo-img {
       max-height: 58px;
       width: auto;
       display: block;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,0.04));
+      cursor: pointer;
     }
-
     .logo-text {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
@@ -127,11 +108,7 @@
       letter-spacing: -0.02em;
       color: var(--charcoal);
     }
-
-    .logo-text span {
-      color: var(--gold);
-    }
-
+    .logo-text span { color: var(--gold); }
     .nav-links {
       display: flex;
       gap: 32px;
@@ -140,22 +117,13 @@
       flex-wrap: wrap;
       font-size: 0.95rem;
     }
-
     .nav-links a {
       transition: color 0.2s;
       letter-spacing: 0.03em;
       color: #2c241e;
     }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    .nav-links .btn {
-      padding: 8px 28px;
-      font-size: 0.8rem;
-    }
-
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links .btn { padding: 8px 28px; font-size: 0.8rem; }
     .hamburger {
       display: none;
       font-size: 1.8rem;
@@ -163,12 +131,47 @@
       color: var(--charcoal);
     }
 
-    /* ---------- HERO (gold & white opulence) ---------- */
+    /* ========== HERO WITH FULL-WIDTH IMAGE ========== */
     .hero {
-      padding: 80px 0 70px;
-      background: linear-gradient(145deg, #fcfaf7 0%, #f7f0e3 100%);
+      position: relative;
+      padding: 120px 0 130px;
+      background: #2c241e; /* fallback */
       text-align: center;
-      border-bottom: 1px solid var(--gold-light);
+      overflow: hidden;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    /* full-screen background image with overlay */
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1558005530-a7958896ec60?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+      filter: brightness(0.6) saturate(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    /* subtle overlay gradient for better text readability */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, rgba(20, 16, 12, 0.7) 0%, rgba(30, 26, 22, 0.5) 100%);
+      z-index: 1;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
     }
 
     .hero-badge {
@@ -188,15 +191,16 @@
       font-family: 'Playfair Display', serif;
       font-size: 3.8rem;
       font-weight: 700;
-      color: #1e1a16;
+      color: #ffffff;
       line-height: 1.15;
       max-width: 900px;
       margin: 0 auto 18px;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.2);
     }
-
     .hero h1 i {
       color: var(--gold);
       font-style: normal;
+      text-shadow: 0 0 30px rgba(201, 162, 61, 0.15);
     }
 
     .hero .gold-underline {
@@ -205,15 +209,17 @@
       background: var(--gold);
       margin: 16px auto 24px;
       border-radius: 2px;
+      box-shadow: 0 0 20px rgba(201, 162, 61, 0.3);
     }
 
     .hero p {
       font-size: 1.2rem;
-      color: #3d332b;
+      color: #f0e8e0;
       max-width: 680px;
       margin: 0 auto 36px;
       font-weight: 300;
       letter-spacing: 0.02em;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
     }
 
     .hero .btn-group {
@@ -222,8 +228,30 @@
       justify-content: center;
       flex-wrap: wrap;
     }
+    .hero .btn {
+      background: var(--gold);
+      color: #1e1a16;
+      border-color: var(--gold);
+      box-shadow: 0 4px 30px rgba(201, 162, 61, 0.3);
+    }
+    .hero .btn:hover {
+      background: transparent;
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .hero .btn-outline {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255,255,255,0.7);
+      box-shadow: none;
+    }
+    .hero .btn-outline:hover {
+      background: var(--gold);
+      color: #1e1a16;
+      border-color: var(--gold);
+    }
 
-    /* ---------- SECTION TITLES (gold) ---------- */
+    /* ---------- SECTION TITLES ---------- */
     .section-title {
       font-family: 'Playfair Display', serif;
       font-size: 2.8rem;
@@ -232,12 +260,7 @@
       text-align: center;
       margin-bottom: 8px;
     }
-
-    .section-title i {
-      color: var(--gold);
-      margin-right: 10px;
-    }
-
+    .section-title i { color: var(--gold); margin-right: 10px; }
     .section-sub {
       text-align: center;
       color: #4f4239;
@@ -246,56 +269,32 @@
       font-size: 1.05rem;
       font-weight: 300;
     }
-
     .gold-divider {
       width: 80px;
       height: 3px;
       background: var(--gold);
       margin: 12px auto 32px;
     }
+    section { padding: 80px 0; }
+    .bg-white-soft { background: var(--white-soft); }
+    .bg-white { background: #ffffff; }
 
-    section {
-      padding: 80px 0;
-    }
-
-    .bg-white-soft {
-      background: var(--white-soft);
-    }
-
-    .bg-white {
-      background: #ffffff;
-    }
-
-    /* ---------- ABOUT (gold accents) ---------- */
+    /* ---------- ABOUT ---------- */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 56px;
       align-items: center;
     }
-
     .about-grid .text h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2.4rem;
       color: #1e1a16;
       margin-bottom: 16px;
     }
-
-    .about-grid .text h2 i {
-      color: var(--gold);
-    }
-
-    .about-grid .text p {
-      color: #3d332b;
-      margin-bottom: 16px;
-      font-weight: 300;
-    }
-
-    .about-grid .text ul {
-      list-style: none;
-      margin-top: 16px;
-    }
-
+    .about-grid .text h2 i { color: var(--gold); }
+    .about-grid .text p { color: #3d332b; margin-bottom: 16px; font-weight: 300; }
+    .about-grid .text ul { list-style: none; margin-top: 16px; }
     .about-grid .text ul li {
       padding: 6px 0;
       display: flex;
@@ -303,45 +302,27 @@
       gap: 14px;
       font-weight: 400;
     }
-
-    .about-grid .text ul li i {
-      color: var(--gold);
-      font-size: 1.2rem;
-      width: 28px;
-      text-align: center;
-    }
-
+    .about-grid .text ul li i { color: var(--gold); font-size: 1.2rem; width: 28px; text-align: center; }
     .about-card {
       background: #ffffff;
       padding: 40px 36px;
       border: 1px solid var(--gold-light);
       box-shadow: 0 8px 40px rgba(201, 162, 61, 0.06);
     }
-
     .about-card h3 {
       font-family: 'Playfair Display', serif;
       color: #1e1a16;
       font-size: 1.6rem;
       margin-bottom: 10px;
     }
-
-    .about-card h3 i {
-      color: var(--gold);
-      margin-right: 8px;
-    }
-
-    .about-card p {
-      color: #3d332b;
-      font-weight: 300;
-    }
-
-    .about-card .gold-tags {
+    .about-card h3 i { color: var(--gold); margin-right: 8px; }
+    .about-card p { color: #3d332b; font-weight: 300; }
+    .gold-tags {
       margin-top: 20px;
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
     }
-
     .gold-tags span {
       background: var(--gold-light);
       padding: 4px 18px;
@@ -352,14 +333,13 @@
       text-transform: uppercase;
     }
 
-    /* ---------- TEAM (elegant cards) ---------- */
+    /* ---------- TEAM ---------- */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 40px;
       margin-top: 20px;
     }
-
     .team-card {
       background: #ffffff;
       padding: 32px 20px 28px;
@@ -368,13 +348,11 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       box-shadow: 0 4px 16px rgba(0,0,0,0.02);
     }
-
     .team-card:hover {
       transform: translateY(-6px);
       border-color: var(--gold);
       box-shadow: 0 12px 40px rgba(201, 162, 61, 0.08);
     }
-
     .team-card .avatar {
       width: 84px;
       height: 84px;
@@ -390,13 +368,11 @@
       font-family: 'Playfair Display', serif;
       border: 3px solid var(--gold);
     }
-
     .team-card h4 {
       font-family: 'Playfair Display', serif;
       font-size: 1.15rem;
       color: #1e1a16;
     }
-
     .team-card .role {
       color: var(--gold-dark);
       font-weight: 600;
@@ -405,53 +381,34 @@
       text-transform: uppercase;
       margin: 4px 0 8px;
     }
+    .team-card .bio { font-size: 0.9rem; color: #4f4239; font-weight: 300; }
 
-    .team-card .bio {
-      font-size: 0.9rem;
-      color: #4f4239;
-      font-weight: 300;
-    }
-
-    /* ---------- YOUTUBE / ARTICLES (gold borders) ---------- */
+    /* ---------- YOUTUBE / ARTICLES ---------- */
     .youtube-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 32px;
       margin-top: 20px;
     }
-
     .youtube-card {
       background: #fff;
       border: 1px solid #ece4d9;
       overflow: hidden;
       transition: 0.2s;
     }
-
-    .youtube-card:hover {
-      border-color: var(--gold);
-    }
-
+    .youtube-card:hover { border-color: var(--gold); }
     .youtube-card iframe {
       width: 100%;
       aspect-ratio: 16/9;
       border: none;
     }
-
-    .youtube-card .info {
-      padding: 18px 20px 22px;
-    }
-
+    .youtube-card .info { padding: 18px 20px 22px; }
     .youtube-card .info h4 {
       font-family: 'Playfair Display', serif;
       color: #1e1a16;
       font-size: 1.1rem;
     }
-
-    .youtube-card .info p {
-      color: #4f4239;
-      font-weight: 300;
-      font-size: 0.9rem;
-    }
+    .youtube-card .info p { color: #4f4239; font-weight: 300; font-size: 0.9rem; }
 
     .articles-grid {
       display: grid;
@@ -459,7 +416,6 @@
       gap: 32px;
       margin-top: 20px;
     }
-
     .article-card {
       background: #fff;
       padding: 28px 28px 32px;
@@ -467,11 +423,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.02);
       transition: 0.2s;
     }
-
-    .article-card:hover {
-      box-shadow: 0 8px 32px rgba(201, 162, 61, 0.08);
-    }
-
+    .article-card:hover { box-shadow: 0 8px 32px rgba(201, 162, 61, 0.08); }
     .article-card .tag {
       display: inline-block;
       background: var(--gold-light);
@@ -483,20 +435,13 @@
       text-transform: uppercase;
       margin-bottom: 12px;
     }
-
     .article-card h4 {
       font-family: 'Playfair Display', serif;
       color: #1e1a16;
       font-size: 1.15rem;
       margin-bottom: 6px;
     }
-
-    .article-card p {
-      color: #4f4239;
-      font-weight: 300;
-      font-size: 0.95rem;
-    }
-
+    .article-card p { color: #4f4239; font-weight: 300; font-size: 0.95rem; }
     .article-card .read-more {
       color: var(--gold-dark);
       font-weight: 600;
@@ -508,56 +453,40 @@
       border-bottom: 1px solid transparent;
       transition: 0.2s;
     }
+    .article-card .read-more:hover { border-bottom-color: var(--gold); }
 
-    .article-card .read-more:hover {
-      border-bottom-color: var(--gold);
-    }
-
-    /* ---------- CONTACT (gold & white) ---------- */
+    /* ---------- CONTACT ---------- */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 56px;
     }
-
     .contact-info h3 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       color: #1e1a16;
       margin-bottom: 12px;
     }
-
-    .contact-info h3 i {
-      color: var(--gold);
-    }
-
+    .contact-info h3 i { color: var(--gold); }
     .contact-info .address {
       background: #fff;
       padding: 24px 28px;
       border: 1px solid var(--gold-light);
       margin: 18px 0 28px;
     }
-
     .contact-info .address p {
       display: flex;
       align-items: center;
       gap: 12px;
       padding: 4px 0;
     }
-
-    .contact-info .address i {
-      color: var(--gold);
-      width: 28px;
-      text-align: center;
-    }
-
+    .contact-info .address i { color: var(--gold); width: 28px; text-align: center; }
     .social-links {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
       margin: 20px 0 16px;
     }
-
     .social-links a {
       display: inline-flex;
       align-items: center;
@@ -570,19 +499,12 @@
       transition: 0.2s;
       color: #1e1a16;
     }
-
     .social-links a:hover {
       border-color: var(--gold);
       background: var(--gold-light);
       color: #1e1a16;
     }
-
-    .social-links a i {
-      font-size: 1.2rem;
-      width: 24px;
-      text-align: center;
-    }
-
+    .social-links a i { font-size: 1.2rem; width: 24px; text-align: center; }
     .map-placeholder {
       margin-top: 28px;
       border: 1px solid var(--gold-light);
@@ -594,36 +516,20 @@
       color: #4f4239;
       font-weight: 300;
     }
-
-    .map-placeholder i {
-      color: var(--gold);
-      font-size: 2rem;
-      margin-right: 12px;
-    }
-
+    .map-placeholder i { color: var(--gold); font-size: 2rem; margin-right: 12px; }
     .contact-form {
       background: #fff;
       padding: 40px 36px;
       border: 1px solid var(--gold-light);
     }
-
     .contact-form h4 {
       font-family: 'Playfair Display', serif;
       font-size: 1.6rem;
       color: #1e1a16;
       margin-bottom: 4px;
     }
-
-    .contact-form p {
-      color: #4f4239;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-
-    .contact-form .form-group {
-      margin-bottom: 18px;
-    }
-
+    .contact-form p { color: #4f4239; font-weight: 300; margin-bottom: 20px; }
+    .contact-form .form-group { margin-bottom: 18px; }
     .contact-form label {
       font-weight: 600;
       font-size: 0.8rem;
@@ -633,7 +539,6 @@
       display: block;
       margin-bottom: 4px;
     }
-
     .contact-form input,
     .contact-form textarea,
     .contact-form select {
@@ -646,47 +551,34 @@
       font-family: 'Inter', sans-serif;
       color: #1e1a16;
     }
-
     .contact-form input:focus,
     .contact-form textarea:focus {
       border-color: var(--gold);
       outline: none;
       box-shadow: 0 0 0 3px rgba(201, 162, 61, 0.1);
     }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form .btn { width: 100%; padding: 16px; font-size: 0.9rem; }
 
-    .contact-form textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .contact-form .btn {
-      width: 100%;
-      padding: 16px;
-      font-size: 0.9rem;
-    }
-
-    /* ---------- FOOTER (gold & dark) ---------- */
+    /* ---------- FOOTER ---------- */
     footer {
       background: #1e1a16;
       color: #d6cdc4;
       padding: 48px 0 28px;
       border-top: 4px solid var(--gold);
     }
-
     footer .container {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 40px;
     }
-
     footer .col h4 {
       font-family: 'Playfair Display', serif;
       color: var(--gold-light);
       font-size: 1.2rem;
       margin-bottom: 12px;
     }
-
     footer .col p,
     footer .col a {
       color: #b5aaa0;
@@ -694,11 +586,7 @@
       font-size: 0.95rem;
       line-height: 1.8;
     }
-
-    footer .col a:hover {
-      color: var(--gold);
-    }
-
+    footer .col a:hover { color: var(--gold); }
     footer .bottom {
       border-top: 1px solid rgba(201, 162, 61, 0.2);
       margin-top: 32px;
@@ -707,25 +595,15 @@
       font-size: 0.9rem;
       color: #9b8f84;
     }
-
-    footer .bottom i {
-      color: var(--gold);
-    }
+    footer .bottom i { color: var(--gold); }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 992px) {
-      .about-grid, .contact-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 2.8rem;
-      }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.8rem; }
     }
-
     @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
+      .hamburger { display: block; }
       .nav-links {
         display: none;
         width: 100%;
@@ -733,41 +611,19 @@
         gap: 16px;
         padding: 20px 0 10px;
       }
-      .nav-links.open {
-        display: flex;
-      }
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      .section-title {
-        font-size: 2.2rem;
-      }
-      .team-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      }
-      .social-links a {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-      }
-      .contact-form {
-        padding: 24px 18px;
-      }
-      .logo-text {
-        font-size: 1.3rem;
-      }
+      .nav-links.open { display: flex; }
+      .hero { padding: 80px 0 90px; min-height: 60vh; }
+      .hero h1 { font-size: 2.2rem; }
+      .section-title { font-size: 2.2rem; }
+      .team-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+      .social-links a { padding: 8px 16px; font-size: 0.8rem; }
+      .contact-form { padding: 24px 18px; }
+      .logo-text { font-size: 1.3rem; }
     }
-
     @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .btn {
-        padding: 12px 28px;
-        font-size: 0.8rem;
-      }
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 1rem; }
+      .btn { padding: 12px 28px; font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -778,7 +634,6 @@
   <div class="container">
     <nav>
       <div class="logo-area">
-        <!-- Replace src with your actual logo (gold/white theme) -->
         <img src="https://placehold.co/80x60/c9a23d/ffffff?text=LOGO" alt="Kopano CyberPath logo" class="logo-img" id="logoImg" />
         <div class="logo-text">KOPANO <span>CYBERPATH</span></div>
       </div>
@@ -797,7 +652,7 @@
   </div>
 </header>
 
-<!-- ========== HERO ========== -->
+<!-- ========== HERO WITH FULL-WIDTH IMAGE ========== -->
 <section class="hero">
   <!-- Background image & overlay -->
   <div class="hero-bg"></div>
@@ -854,35 +709,30 @@
     <div class="gold-divider"></div>
     <p class="section-sub">Passionate leaders driving Kopano CyberPath’s mission forward.</p>
     <div class="team-grid">
-      <!-- Executive Director -->
       <div class="team-card">
         <div class="avatar">MP</div>
         <h4>Matsoso P.F</h4>
         <div class="role">Executive Director</div>
         <div class="bio">Overall leadership, public face, strategic direction & partner relations.</div>
       </div>
-      <!-- Operations -->
       <div class="team-card">
         <div class="avatar">MN</div>
         <h4>Makhakhe N. Lineo</h4>
         <div class="role">Operations Coordinator</div>
         <div class="bio">Keeps day‑to‑day running: scheduling, comms, records & admin.</div>
       </div>
-      <!-- Facilitator -->
       <div class="team-card">
         <div class="avatar">MT</div>
         <h4>Mathoka Teohoo</h4>
         <div class="role">Lead Facilitator</div>
         <div class="bio">Owns workshop curriculum, quality & facilitator team management.</div>
       </div>
-      <!-- Partnerships -->
       <div class="team-card">
         <div class="avatar">TL</div>
         <h4>Toka Lethunya</h4>
         <div class="role">Partnerships &amp; Growth</div>
         <div class="bio">Builds relationships with schools, corporates, government & NGOs.</div>
       </div>
-      <!-- Finance -->
       <div class="team-card">
         <div class="avatar">TN</div>
         <h4>Tsepheli Nichephe</h4>
@@ -1059,19 +909,15 @@
 
 <!-- ========== SCRIPTS ========== -->
 <script>
-  // Mobile menu
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
   }
-
-  // Close menu on link click (mobile)
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('open');
     });
   });
 
-  // Contact form handler
   function handleFormSubmit(e) {
     e.preventDefault();
     const feedback = document.getElementById('formFeedback');
@@ -1085,7 +931,6 @@
       feedback.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please fill in all required fields.';
       return;
     }
-
     feedback.style.display = 'block';
     feedback.style.color = '#1e1a16';
     feedback.innerHTML = '<i class="fas fa-check-circle" style="color:var(--gold);"></i> Thank you, ' + name + '! Your enquiry has been sent. We’ll reply soon.';
@@ -1093,12 +938,10 @@
     setTimeout(() => { feedback.style.display = 'none'; }, 6000);
   }
 
-  // ---------- LOGO UPLOAD (simple click-to-upload) ----------
-  // Click the logo placeholder to upload your own image.
+  // Logo upload
   const logoImg = document.getElementById('logoImg');
   logoImg.style.cursor = 'pointer';
   logoImg.title = 'Click to upload your logo';
-
   logoImg.addEventListener('click', function() {
     const input = document.createElement('input');
     input.type = 'file';
