@@ -10,8 +10,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
 <style>
   /* ============ RESET & VARIABLES ============ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -348,9 +346,18 @@ h2.section-title {
   justify-content: center;
   gap: 8px;
   transition: border-color 0.2s;
+  overflow: hidden;
+  padding: 8px;
 }
 .partner-tile:hover { border-color: var(--gold-dim); }
-.partner-tile svg { width: 24px; height: 24px; color: var(--navy-3); }
+.partner-tile img {
+  max-height: 60%;
+  max-width: 80%;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.partner-tile:hover img { opacity: 1; }
 .partner-tile span {
   font-size: 0.68rem;
   font-family: var(--font-mono);
@@ -873,10 +880,13 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
   .footer-cols { grid-template-columns: 1fr; }
 }
 </style>
+</head>
+<body>
 <!-- ============ NAV ============ -->
 <header class="site-nav">
   <div class="container nav-inner">
     <a href="#top" class="nav-logo">
+      <!-- ********** SET YOUR LOGO IMAGE BELOW ********** -->
       <img src="logo.png" alt="Kopano Cyberpath" />
       <span>Kopano <em>Cyberpath</em></span>
     </a>
@@ -932,6 +942,7 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
     <div class="hero-emblem">
       <div class="ring"></div>
       <div class="ring-dashed"></div>
+      <!-- ********** SET YOUR HERO EMBLEM/LOGO IMAGE BELOW ********** -->
       <img src="logo.png" alt="Kopano Cyberpath emblem" />
     </div>
   </div>
@@ -986,14 +997,32 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
       with — growing this list as each collaboration is confirmed.</p>
     </div>
 
-    <!-- Placeholder tiles — see assets/partners/README.txt to add real logos -->
+    <!-- ********** PARTNER LOGOS: replace src with your partner images ********** -->
     <div class="partners-grid">
-      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
-      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
-      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
-      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
-      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
-      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
+      <div class="partner-tile">
+        <img src="partner1.png" alt="Partner 1" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <span>Partner 1</span>
+      </div>
+      <div class="partner-tile">
+        <img src="partner2.png" alt="Partner 2" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <span>Partner 2</span>
+      </div>
+      <div class="partner-tile">
+        <img src="partner3.png" alt="Partner 3" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <span>Partner 3</span>
+      </div>
+      <div class="partner-tile">
+        <img src="partner4.png" alt="Partner 4" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <span>Partner 4</span>
+      </div>
+      <div class="partner-tile">
+        <img src="partner5.png" alt="Partner 5" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <span>Partner 5</span>
+      </div>
+      <div class="partner-tile">
+        <img src="partner6.png" alt="Partner 6" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <span>Partner 6</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1097,6 +1126,7 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
 
 <!-- ============ GLOBAL REACH ============ -->
 <section class="global-reach bg-navy-deep">
+  <!-- ********** SET YOUR GLOBAL REACH BACKGROUND IMAGE BELOW ********** -->
   <img src="globe.jpeg" alt="" class="bg-img" aria-hidden="true" />
   <div id="network-canvas-wrap"><canvas id="network-canvas"></canvas></div>
   <div class="fade"></div>
@@ -1167,17 +1197,79 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
     <div class="eyebrow"><span>Beng Baka The Team</span></div>
     <h2 class="section-title">Khotsong. Meet the people behind Kopano Cyberpath.</h2>
 
-    <!-- To add a photo: see assets/team/README.txt -->
+    <!-- ********** TEAM MEMBER PHOTOS: replace src with your team images ********** -->
     <div class="team-grid">
-      <div class="team-card"><div class="team-photo"><span>MP</span></div><h3>Matsoso P.F</h3><div class="role">Executive Director</div></div>
-      <div class="team-card"><div class="team-photo"><span>MT</span></div><h3>Mathoka Teboho</h3><div class="role">Lead Facilitator</div></div>
-      <div class="team-card"><div class="team-photo"><span>PP</span></div><h3>Panta Pii</h3><div class="role">Innovation & Product Lead</div></div>
-      <div class="team-card"><div class="team-photo"><span>MN</span></div><h3>Makhakhe N. Lineo</h3><div class="role">Operations Coordinator</div></div>
-      <div class="team-card"><div class="team-photo"><span>TL</span></div><h3>Toka Lethunya</h3><div class="role">Partnerships & Growth</div></div>
-      <div class="team-card"><div class="team-photo"><span>TN</span></div><h3>Tsepheli Nichephe</h3><div class="role">Finance & Fundraising</div></div>
-      <div class="team-card"><div class="team-photo"><span>RS</span></div><h3>Ramakhupane Sekhenene</h3><div class="role">Tech Event & Hackathon Organiser</div></div>
-      <div class="team-card"><div class="team-photo"><span>TR</span></div><h3>Thakane Rampuku</h3><div class="role">Data Driven Strategist</div></div>
-      <div class="team-card"><div class="team-photo"><span>ML</span></div><h3>Mpho Lekunye</h3><div class="role">Cybersecurity Awareness Campaign Lead</div></div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_matsoso.jpg" alt="Matsoso P.F" onerror="this.style.display='none';this.parentElement.innerHTML='<span>MP</span>'" />
+        </div>
+        <h3>Matsoso P.F</h3>
+        <div class="role">Executive Director</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_mathoka.jpg" alt="Mathoka Teboho" onerror="this.style.display='none';this.parentElement.innerHTML='<span>MT</span>'" />
+        </div>
+        <h3>Mathoka Teboho</h3>
+        <div class="role">Lead Facilitator</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_panta.jpg" alt="Panta Pii" onerror="this.style.display='none';this.parentElement.innerHTML='<span>PP</span>'" />
+        </div>
+        <h3>Panta Pii</h3>
+        <div class="role">Innovation & Product Lead</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_makhakhe.jpg" alt="Makhakhe N. Lineo" onerror="this.style.display='none';this.parentElement.innerHTML='<span>MN</span>'" />
+        </div>
+        <h3>Makhakhe N. Lineo</h3>
+        <div class="role">Operations Coordinator</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_toka.jpg" alt="Toka Lethunya" onerror="this.style.display='none';this.parentElement.innerHTML='<span>TL</span>'" />
+        </div>
+        <h3>Toka Lethunya</h3>
+        <div class="role">Partnerships & Growth</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_tsepheli.jpg" alt="Tsepheli Nichephe" onerror="this.style.display='none';this.parentElement.innerHTML='<span>TN</span>'" />
+        </div>
+        <h3>Tsepheli Nichephe</h3>
+        <div class="role">Finance & Fundraising</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_ramakhupane.jpg" alt="Ramakhupane Sekhenene" onerror="this.style.display='none';this.parentElement.innerHTML='<span>RS</span>'" />
+        </div>
+        <h3>Ramakhupane Sekhenene</h3>
+        <div class="role">Tech Event & Hackathon Organiser</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_thakane.jpg" alt="Thakane Rampuku" onerror="this.style.display='none';this.parentElement.innerHTML='<span>TR</span>'" />
+        </div>
+        <h3>Thakane Rampuku</h3>
+        <div class="role">Data Driven Strategist</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="team_mpho.jpg" alt="Mpho Lekunye" onerror="this.style.display='none';this.parentElement.innerHTML='<span>ML</span>'" />
+        </div>
+        <h3>Mpho Lekunye</h3>
+        <div class="role">Cybersecurity Awareness Campaign Lead</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1358,219 +1450,210 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 <script>
   /* ============ MATRIX RAIN (hero background) ============ */
-// Subtle "code rain" background for the hero — small falling glyphs in the
-// site's gold/ice palette, with an occasional dim red glyph standing in for
-// an error/exception. Respects prefers-reduced-motion.
-(function () {
-  const canvas = document.getElementById("matrix-canvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  (function () {
+    const canvas = document.getElementById("matrix-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const CHARS = "01{}<>/#$%&*+=;:.01010110KOPANO01CYBER01PATH".split("");
-  const GOLD = "rgba(228, 185, 63, ALPHA)";
-  const ICE = "rgba(95, 208, 232, ALPHA)";
-  const MIST = "rgba(159, 176, 201, ALPHA)";
-  const ERROR_RED = "rgba(217, 90, 74, ALPHA)";
-  const ERROR_CHANCE = 0.035;
-  const FONT_SIZE = 13;
+    const CHARS = "01{}<>/#$%&*+=;:.01010110KOPANO01CYBER01PATH".split("");
+    const GOLD = "rgba(228, 185, 63, ALPHA)";
+    const ICE = "rgba(95, 208, 232, ALPHA)";
+    const MIST = "rgba(159, 176, 201, ALPHA)";
+    const ERROR_RED = "rgba(217, 90, 74, ALPHA)";
+    const ERROR_CHANCE = 0.035;
+    const FONT_SIZE = 13;
 
-  let width, height, columns, drops, speeds, raf;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width, height, columns, drops, speeds, raf;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-  function resize() {
-    width = canvas.clientWidth;
-    height = canvas.clientHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    columns = Math.floor(width / FONT_SIZE);
-    drops = Array.from({ length: columns }, () => Math.random() * -50);
-    speeds = Array.from({ length: columns }, () => 0.35 + Math.random() * 0.55);
-  }
-
-  function pickColor() {
-    const r = Math.random();
-    if (r < ERROR_CHANCE) return ERROR_RED;
-    if (r < 0.45) return GOLD;
-    if (r < 0.75) return ICE;
-    return MIST;
-  }
-
-  function draw() {
-    ctx.fillStyle = "rgba(10, 22, 40, 0.16)";
-    ctx.fillRect(0, 0, width, height);
-    ctx.font = `${FONT_SIZE}px 'JetBrains Mono', monospace`;
-
-    for (let i = 0; i < columns; i++) {
-      const char = CHARS[Math.floor(Math.random() * CHARS.length)];
-      const x = i * FONT_SIZE;
-      const y = drops[i] * FONT_SIZE;
-      const colorTpl = pickColor();
-      const isError = colorTpl === ERROR_RED;
-      const alpha = isError ? 0.55 : 0.28 + Math.random() * 0.25;
-      ctx.fillStyle = colorTpl.replace("ALPHA", alpha.toFixed(2));
-      ctx.fillText(char, x, y);
-
-      if (y > height && Math.random() > 0.975) drops[i] = 0;
-      drops[i] += speeds[i];
+    function resize() {
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      columns = Math.floor(width / FONT_SIZE);
+      drops = Array.from({ length: columns }, () => Math.random() * -50);
+      speeds = Array.from({ length: columns }, () => 0.35 + Math.random() * 0.55);
     }
-  }
 
-  function handleResize() {
-    resize();
-    if (reduceMotion) draw();
-  }
+    function pickColor() {
+      const r = Math.random();
+      if (r < ERROR_CHANCE) return ERROR_RED;
+      if (r < 0.45) return GOLD;
+      if (r < 0.75) return ICE;
+      return MIST;
+    }
 
-  resize();
-  if (reduceMotion) {
-    draw();
-  } else {
-    (function loop() {
-      draw();
-      raf = requestAnimationFrame(loop);
-    })();
-  }
-  window.addEventListener("resize", handleResize);
-})();
+    function draw() {
+      ctx.fillStyle = "rgba(10, 22, 40, 0.16)";
+      ctx.fillRect(0, 0, width, height);
+      ctx.font = `${FONT_SIZE}px 'JetBrains Mono', monospace`;
 
-/* ============ NETWORK BACKGROUND (Global Reach section) ============ */
-// Slow-drifting particle network — used behind the "Global Reach" section
-// to suggest a live, connected tech network rather than a static photo.
-// Respects prefers-reduced-motion by rendering one still frame.
-(function () {
-  const canvas = document.getElementById("network-canvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      for (let i = 0; i < columns; i++) {
+        const char = CHARS[Math.floor(Math.random() * CHARS.length)];
+        const x = i * FONT_SIZE;
+        const y = drops[i] * FONT_SIZE;
+        const colorTpl = pickColor();
+        const isError = colorTpl === ERROR_RED;
+        const alpha = isError ? 0.55 : 0.28 + Math.random() * 0.25;
+        ctx.fillStyle = colorTpl.replace("ALPHA", alpha.toFixed(2));
+        ctx.fillText(char, x, y);
 
-  const DOT_COLORS = ["#E4B93F", "#5FD0E8", "#9FB0C9"];
-  const LINE_COLOR = "95, 208, 232";
-  const LINK_DIST = 150;
-  const SPEED = 0.4;
-  const DENSITY = 70;
-
-  let width, height, points, raf;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-  function resize() {
-    width = canvas.clientWidth;
-    height = canvas.clientHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function makePoints() {
-    const count = Math.round((width * height) / ((1400 * 1400) / DENSITY));
-    points = Array.from({ length: Math.max(24, count) }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * SPEED,
-      vy: (Math.random() - 0.5) * SPEED,
-      r: Math.random() * 1.4 + 0.6,
-      color: DOT_COLORS[Math.floor(Math.random() * DOT_COLORS.length)],
-    }));
-  }
-
-  function step() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (const p of points) {
-      if (!reduceMotion) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
+        if (y > height && Math.random() > 0.975) drops[i] = 0;
+        drops[i] += speeds[i];
       }
     }
 
-    for (let i = 0; i < points.length; i++) {
-      for (let j = i + 1; j < points.length; j++) {
-        const a = points[i], b = points[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < LINK_DIST) {
-          const alpha = (1 - dist / LINK_DIST) * 0.35;
-          ctx.strokeStyle = `rgba(${LINE_COLOR}, ${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
+    function handleResize() {
+      resize();
+      if (reduceMotion) draw();
+    }
+
+    resize();
+    if (reduceMotion) {
+      draw();
+    } else {
+      (function loop() {
+        draw();
+        raf = requestAnimationFrame(loop);
+      })();
+    }
+    window.addEventListener("resize", handleResize);
+  })();
+
+  /* ============ NETWORK BACKGROUND ============ */
+  (function () {
+    const canvas = document.getElementById("network-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const DOT_COLORS = ["#E4B93F", "#5FD0E8", "#9FB0C9"];
+    const LINE_COLOR = "95, 208, 232";
+    const LINK_DIST = 150;
+    const SPEED = 0.4;
+    const DENSITY = 70;
+
+    let width, height, points, raf;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resize() {
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function makePoints() {
+      const count = Math.round((width * height) / ((1400 * 1400) / DENSITY));
+      points = Array.from({ length: Math.max(24, count) }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * SPEED,
+        vy: (Math.random() - 0.5) * SPEED,
+        r: Math.random() * 1.4 + 0.6,
+        color: DOT_COLORS[Math.floor(Math.random() * DOT_COLORS.length)],
+      }));
+    }
+
+    function step() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (const p of points) {
+        if (!reduceMotion) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
         }
       }
+
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const a = points[i], b = points[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            const alpha = (1 - dist / LINK_DIST) * 0.35;
+            ctx.strokeStyle = `rgba(${LINE_COLOR}, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (const p of points) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.8;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+
+      if (!reduceMotion) raf = requestAnimationFrame(step);
     }
 
-    for (const p of points) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = 0.8;
-      ctx.fill();
-      ctx.globalAlpha = 1;
+    function handleResize() {
+      resize();
+      makePoints();
+      if (reduceMotion) step();
     }
 
-    if (!reduceMotion) raf = requestAnimationFrame(step);
-  }
-
-  function handleResize() {
     resize();
     makePoints();
-    if (reduceMotion) step();
+    step();
+    window.addEventListener("resize", handleResize);
+  })();
+
+  /* ============ MAIN INTERACTIONS ============ */
+  const navToggle = document.getElementById("navToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+      navToggle.textContent = mobileMenu.classList.contains("open") ? "✕" : "☰";
+    });
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        navToggle.textContent = "☰";
+      });
+    });
   }
 
-  resize();
-  makePoints();
-  step();
-  window.addEventListener("resize", handleResize);
-})();
-
-/* ============ MAIN INTERACTIONS (nav + forms) ============ */
-// Mobile nav toggle
-const navToggle = document.getElementById("navToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-if (navToggle && mobileMenu) {
-  navToggle.addEventListener("click", () => {
-    mobileMenu.classList.toggle("open");
-    navToggle.textContent = mobileMenu.classList.contains("open") ? "✕" : "☰";
-  });
-  mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("open");
-      navToggle.textContent = "☰";
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const feedback = document.getElementById("formFeedback");
+      const name = document.getElementById("name").value.trim();
+      if (!name) return;
+      feedback.style.display = "block";
+      feedback.textContent = `Thank you, ${name}! Your enquiry has been noted — we'll reply soon.`;
+      contactForm.reset();
+      setTimeout(() => {
+        feedback.style.display = "none";
+      }, 6000);
     });
-  });
-}
+  }
 
-// Contact form (front-end only for now — wire to a backend when ready)
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const feedback = document.getElementById("formFeedback");
-    const name = document.getElementById("name").value.trim();
-    if (!name) return;
-    feedback.style.display = "block";
-    feedback.textContent = `Thank you, ${name}! Your enquiry has been noted — we'll reply soon.`;
-    contactForm.reset();
-    setTimeout(() => {
-      feedback.style.display = "none";
-    }, 6000);
-  });
-}
-
-// Newsletter form (front-end only for now)
-const newsletterForm = document.getElementById("newsletterForm");
-if (newsletterForm) {
-  newsletterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const input = newsletterForm.querySelector("input");
-    if (!input.value.trim()) return;
-    input.value = "";
-    input.placeholder = "Thanks — you're on the list!";
-  });
-}
+  const newsletterForm = document.getElementById("newsletterForm");
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = newsletterForm.querySelector("input");
+      if (!input.value.trim()) return;
+      input.value = "";
+      input.placeholder = "Thanks — you're on the list!";
+    });
+  }
 </script>
 </body>
 </html>
