@@ -1,971 +1,1575 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kopano CyberPath · Gold & White</title>
-  <!-- Google Fonts: Agrandir family (via similar luxury typefaces) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    /* ---------- RESET & GOLD/WHITE LUXURY ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', 'Playfair Display', serif;
-      background: #fcfaf7;
-      color: #1e1a16;
-      line-height: 1.6;
-    }
-
-    :root {
-      --gold: #c9a23d;
-      --gold-light: #e8d5a3;
-      --gold-glow: #f3e5c0;
-      --gold-dark: #a8822a;
-      --white: #ffffff;
-      --white-soft: #faf8f5;
-      --charcoal: #1e1a16;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    .container { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
-
-    /* ---------- BUTTONS ---------- */
-    .btn {
-      display: inline-block;
-      background: var(--gold);
-      color: #1e1a16;
-      padding: 14px 40px;
-      border-radius: 0px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      border: 2px solid var(--gold);
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 20px rgba(201, 162, 61, 0.2);
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-    }
-    .btn:hover {
-      background: transparent;
-      color: var(--gold);
-      border-color: var(--gold);
-      box-shadow: 0 8px 30px rgba(201, 162, 61, 0.15);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--gold);
-      border: 2px solid var(--gold);
-      box-shadow: none;
-    }
-    .btn-outline:hover {
-      background: var(--gold);
-      color: #1e1a16;
-    }
-    .btn-sm { padding: 8px 24px; font-size: 0.8rem; }
-
-    /* ---------- HEADER ---------- */
-    header {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(4px);
-      border-bottom: 2px solid var(--gold-light);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 14px 0;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .logo-img {
-      max-height: 58px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.04));
-      /* remove pointer cursor since dev sets image */
-    }
-    .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.7rem;
-      letter-spacing: -0.02em;
-      color: var(--charcoal);
-    }
-    .logo-text span { color: var(--gold); }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      font-weight: 500;
-      align-items: center;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-    }
-    .nav-links a {
-      transition: color 0.2s;
-      letter-spacing: 0.03em;
-      color: #2c241e;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links .btn { padding: 8px 28px; font-size: 0.8rem; }
-    .hamburger {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--charcoal);
-    }
-
-    /* ========== HERO WITH FULL-WIDTH IMAGE ========== */
-    .hero {
-      position: relative;
-      padding: 120px 0 130px;
-      background: #2c241e; /* fallback */
-      text-align: center;
-      overflow: hidden;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-    }
-
-    /* full-screen background image with overlay */
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* ********** SET YOUR HERO BACKGROUND IMAGE BELOW ********** */
-      background-image: url('https://images.unsplash.com/photo-1558005530-a7958896ec60?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-      background-size: cover;
-      background-position: center 30%;
-      z-index: 0;
-      filter: brightness(0.6) saturate(0.9);
-      transition: transform 0.3s ease;
-    }
-
-    /* subtle overlay gradient for better text readability */
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(145deg, rgba(20, 16, 12, 0.7) 0%, rgba(30, 26, 22, 0.5) 100%);
-      z-index: 1;
-    }
-
-    .hero .container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: var(--gold);
-      color: #1e1a16;
-      padding: 6px 28px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      margin-bottom: 28px;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.8rem;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.15;
-      max-width: 900px;
-      margin: 0 auto 18px;
-      text-shadow: 0 4px 24px rgba(0,0,0,0.2);
-    }
-    .hero h1 i {
-      color: var(--gold);
-      font-style: normal;
-      text-shadow: 0 0 30px rgba(201, 162, 61, 0.15);
-    }
-
-    .hero .gold-underline {
-      width: 120px;
-      height: 4px;
-      background: var(--gold);
-      margin: 16px auto 24px;
-      border-radius: 2px;
-      box-shadow: 0 0 20px rgba(201, 162, 61, 0.3);
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #f0e8e0;
-      max-width: 680px;
-      margin: 0 auto 36px;
-      font-weight: 300;
-      letter-spacing: 0.02em;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.15);
-    }
-
-    .hero .btn-group {
-      display: flex;
-      gap: 18px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .hero .btn {
-      background: var(--gold);
-      color: #1e1a16;
-      border-color: var(--gold);
-      box-shadow: 0 4px 30px rgba(201, 162, 61, 0.3);
-    }
-    .hero .btn:hover {
-      background: transparent;
-      color: var(--gold);
-      border-color: var(--gold);
-    }
-    .hero .btn-outline {
-      background: transparent;
-      color: #ffffff;
-      border: 2px solid rgba(255,255,255,0.7);
-      box-shadow: none;
-    }
-    .hero .btn-outline:hover {
-      background: var(--gold);
-      color: #1e1a16;
-      border-color: var(--gold);
-    }
-
-    /* ---------- SECTION TITLES ---------- */
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #1e1a16;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-    .section-title i { color: var(--gold); margin-right: 10px; }
-    .section-sub {
-      text-align: center;
-      color: #4f4239;
-      max-width: 680px;
-      margin: 0 auto 50px;
-      font-size: 1.05rem;
-      font-weight: 300;
-    }
-    .gold-divider {
-      width: 80px;
-      height: 3px;
-      background: var(--gold);
-      margin: 12px auto 32px;
-    }
-    section { padding: 80px 0; }
-    .bg-white-soft { background: var(--white-soft); }
-    .bg-white { background: #ffffff; }
-
-    /* ---------- ABOUT ---------- */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-    }
-    .about-grid .text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      color: #1e1a16;
-      margin-bottom: 16px;
-    }
-    .about-grid .text h2 i { color: var(--gold); }
-    .about-grid .text p { color: #3d332b; margin-bottom: 16px; font-weight: 300; }
-    .about-grid .text ul { list-style: none; margin-top: 16px; }
-    .about-grid .text ul li {
-      padding: 6px 0;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-weight: 400;
-    }
-    .about-grid .text ul li i { color: var(--gold); font-size: 1.2rem; width: 28px; text-align: center; }
-    .about-card {
-      background: #ffffff;
-      padding: 40px 36px;
-      border: 1px solid var(--gold-light);
-      box-shadow: 0 8px 40px rgba(201, 162, 61, 0.06);
-    }
-    .about-card h3 {
-      font-family: 'Playfair Display', serif;
-      color: #1e1a16;
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-    }
-    .about-card h3 i { color: var(--gold); margin-right: 8px; }
-    .about-card p { color: #3d332b; font-weight: 300; }
-    .gold-tags {
-      margin-top: 20px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .gold-tags span {
-      background: var(--gold-light);
-      padding: 4px 18px;
-      font-weight: 500;
-      color: #1e1a16;
-      font-size: 0.75rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    /* ---------- TEAM (with image support) ---------- */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      margin-top: 20px;
-    }
-    .team-card {
-      background: #ffffff;
-      padding: 28px 16px 24px;
-      text-align: center;
-      border: 1px solid #ece4d9;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
-    }
-    .team-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--gold);
-      box-shadow: 0 12px 40px rgba(201, 162, 61, 0.08);
-    }
-    /* team member photo */
-    .team-card .team-photo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--gold);
-      margin: 0 auto 14px;
-      display: block;
-      background: var(--gold-light); /* fallback */
-    }
-    .team-card h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      color: #1e1a16;
-    }
-    .team-card .role {
-      color: var(--gold-dark);
-      font-weight: 600;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 4px 0 8px;
-    }
-    .team-card .bio { font-size: 0.9rem; color: #4f4239; font-weight: 300; }
-
-    /* ---------- YOUTUBE / ARTICLES ---------- */
-    .youtube-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-      margin-top: 20px;
-    }
-    .youtube-card {
-      background: #fff;
-      border: 1px solid #ece4d9;
-      overflow: hidden;
-      transition: 0.2s;
-    }
-    .youtube-card:hover { border-color: var(--gold); }
-    .youtube-card iframe {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border: none;
-    }
-    .youtube-card .info { padding: 18px 20px 22px; }
-    .youtube-card .info h4 {
-      font-family: 'Playfair Display', serif;
-      color: #1e1a16;
-      font-size: 1.1rem;
-    }
-    .youtube-card .info p { color: #4f4239; font-weight: 300; font-size: 0.9rem; }
-
-    .articles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 32px;
-      margin-top: 20px;
-    }
-    .article-card {
-      background: #fff;
-      padding: 28px 28px 32px;
-      border-left: 6px solid var(--gold);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-      transition: 0.2s;
-    }
-    .article-card:hover { box-shadow: 0 8px 32px rgba(201, 162, 61, 0.08); }
-    .article-card .tag {
-      display: inline-block;
-      background: var(--gold-light);
-      color: #1e1a16;
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 2px 16px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .article-card h4 {
-      font-family: 'Playfair Display', serif;
-      color: #1e1a16;
-      font-size: 1.15rem;
-      margin-bottom: 6px;
-    }
-    .article-card p { color: #4f4239; font-weight: 300; font-size: 0.95rem; }
-    .article-card .read-more {
-      color: var(--gold-dark);
-      font-weight: 600;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 14px;
-      border-bottom: 1px solid transparent;
-      transition: 0.2s;
-    }
-    .article-card .read-more:hover { border-bottom-color: var(--gold); }
-
-    /* ---------- CONTACT ---------- */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-    }
-    .contact-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: #1e1a16;
-      margin-bottom: 12px;
-    }
-    .contact-info h3 i { color: var(--gold); }
-    .contact-info .address {
-      background: #fff;
-      padding: 24px 28px;
-      border: 1px solid var(--gold-light);
-      margin: 18px 0 28px;
-    }
-    .contact-info .address p {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 4px 0;
-    }
-    .contact-info .address i { color: var(--gold); width: 28px; text-align: center; }
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin: 20px 0 16px;
-    }
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #fff;
-      padding: 10px 22px;
-      border: 1px solid #e2d7cc;
-      font-weight: 500;
-      font-size: 0.85rem;
-      transition: 0.2s;
-      color: #1e1a16;
-    }
-    .social-links a:hover {
-      border-color: var(--gold);
-      background: var(--gold-light);
-      color: #1e1a16;
-    }
-    .social-links a i { font-size: 1.2rem; width: 24px; text-align: center; }
-    .map-placeholder {
-      margin-top: 28px;
-      border: 1px solid var(--gold-light);
-      background: #ede7df;
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #4f4239;
-      font-weight: 300;
-    }
-    .map-placeholder i { color: var(--gold); font-size: 2rem; margin-right: 12px; }
-    .contact-form {
-      background: #fff;
-      padding: 40px 36px;
-      border: 1px solid var(--gold-light);
-    }
-    .contact-form h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: #1e1a16;
-      margin-bottom: 4px;
-    }
-    .contact-form p { color: #4f4239; font-weight: 300; margin-bottom: 20px; }
-    .contact-form .form-group { margin-bottom: 18px; }
-    .contact-form label {
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #1e1a16;
-      display: block;
-      margin-bottom: 4px;
-    }
-    .contact-form input,
-    .contact-form textarea,
-    .contact-form select {
-      width: 100%;
-      padding: 14px 18px;
-      border: 1px solid #e2d7cc;
-      font-size: 1rem;
-      background: #fcfaf7;
-      transition: 0.2s;
-      font-family: 'Inter', sans-serif;
-      color: #1e1a16;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: var(--gold);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(201, 162, 61, 0.1);
-    }
-    .contact-form textarea { min-height: 120px; resize: vertical; }
-    .contact-form .btn { width: 100%; padding: 16px; font-size: 0.9rem; }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      background: #1e1a16;
-      color: #d6cdc4;
-      padding: 48px 0 28px;
-      border-top: 4px solid var(--gold);
-    }
-    footer .container {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-    footer .col h4 {
-      font-family: 'Playfair Display', serif;
-      color: var(--gold-light);
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-    }
-    footer .col p,
-    footer .col a {
-      color: #b5aaa0;
-      font-weight: 300;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-    footer .col a:hover { color: var(--gold); }
-    footer .bottom {
-      border-top: 1px solid rgba(201, 162, 61, 0.2);
-      margin-top: 32px;
-      padding-top: 24px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #9b8f84;
-    }
-    footer .bottom i { color: var(--gold); }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 992px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.8rem; }
-    }
-    @media (max-width: 768px) {
-      .hamburger { display: block; }
-      .nav-links {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        gap: 16px;
-        padding: 20px 0 10px;
-      }
-      .nav-links.open { display: flex; }
-      .hero { padding: 80px 0 90px; min-height: 60vh; }
-      .hero h1 { font-size: 2.2rem; }
-      .section-title { font-size: 2.2rem; }
-      .team-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-      .social-links a { padding: 8px 16px; font-size: 0.8rem; }
-      .contact-form { padding: 24px 18px; }
-      .logo-text { font-size: 1.3rem; }
-    }
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 1.8rem; }
-      .hero p { font-size: 1rem; }
-      .btn { padding: 12px 28px; font-size: 0.8rem; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Kopano Cyberpath empowering orphaned and underserved youth in Lesotho with cybersecurity and digital skills." />
+<title>Kopano Cyberpath United on every path in tech</title>
+<link rel="icon" type="image/jpeg" href="assets/logo.jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+<style>
+  /* ============ RESET & VARIABLES ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-<!-- ========== HEADER ========== -->
-<header>
-  <div class="container">
-    <nav>
-      <div class="logo-area">
-        <!-- ********** SET YOUR LOGO IMAGE BELOW ********** -->
-        <img src="cyber.png" alt="Kopano CyberPath logo" class="logo-img" id="logoImg" />
-        <div class="logo-text">KOPANO <span>CYBERPATH</span></div>
-      </div>
-      <div class="hamburger" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#team">Team</a>
-        <a href="#media">Media</a>
-        <a href="#articles">Articles</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="btn btn-sm">Get Involved</a>
-      </div>
+:root {
+  --navy: #070F1E;
+  --navy-deep: #0A1628;
+  --navy-2: #0F2038;
+  --navy-3: #152A47;
+  --gold: #E4B93F;
+  --gold-dim: #9C7A1F;
+  --gold-soft: #F3D876;
+  --ice: #5FD0E8;
+  --white: #F6F7FA;
+  --mist: #9FB0C9;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+img { max-width: 100%; display: block; }
+button, input, textarea, select { font-family: inherit; }
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+}
+.eyebrow::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+.eyebrow span {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 2px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-gold { background: var(--gold); color: var(--navy-deep); }
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--gold-dim);
+}
+.btn-outline:hover { border-color: var(--gold); }
+
+section { position: relative; }
+
+/* ============ NAV ============ */
+header.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  background: rgba(7, 15, 30, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--navy-3);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo img { height: 44px; width: 44px; object-fit: contain; }
+.nav-logo span {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.nav-logo span em { color: var(--gold); font-style: normal; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-links a {
+  font-size: 0.9rem;
+  color: var(--mist);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta { display: inline-block; }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--navy);
+  padding: 0 24px 24px;
+}
+.mobile-menu a {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--navy-3);
+  color: var(--mist);
+  font-size: 0.9rem;
+}
+.mobile-menu.open { display: flex; }
+
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-deep);
+  padding: 160px 0 100px;
+}
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(90deg, rgba(228,185,63,0.5) 1px, transparent 1px),
+    linear-gradient(rgba(228,185,63,0.5) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.hero-glow {
+  position: absolute;
+  top: -160px; right: -160px;
+  width: 560px; height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(228,185,63,0.13), transparent 70%);
+}
+.hero-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(10,22,40,0.4), var(--navy-deep));
+  pointer-events: none;
+}
+#matrix-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.32;
+  pointer-events: none;
+}
+#matrix-canvas { width: 100%; height: 100%; }
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  line-height: 1.05;
+  font-weight: 600;
+  color: var(--white);
+}
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero p.lead {
+  margin-top: 28px;
+  max-width: 560px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--mist);
+}
+.hero-actions {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero-stats {
+  margin-top: 56px;
+  display: flex;
+  gap: 40px;
+  font-family: var(--font-mono);
+}
+.hero-stats .num { font-size: 1.8rem; font-weight: 600; color: var(--gold); }
+.hero-stats .label { font-size: 0.7rem; margin-top: 4px; color: var(--mist); }
+
+.hero-emblem { position: relative; display: flex; justify-content: center; }
+.hero-emblem .ring {
+  position: absolute;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  opacity: 0.5;
+}
+.hero-emblem .ring-dashed {
+  position: absolute;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  border: 1px dashed var(--gold);
+  opacity: 0.35;
+  animation: spin 40s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hero-emblem img {
+  position: relative;
+  width: 380px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 40px rgba(228,185,63,0.25));
+}
+
+/* ============ CIRCUIT DIVIDER ============ */
+.circuit-divider { width: 100%; height: 48px; display: block; }
+.circuit-divider.flip { transform: scaleY(-1); }
+
+/* ============ SECTION SCAFFOLDING ============ */
+.section-pad { padding: 100px 0; }
+.bg-navy { background: var(--navy); }
+.bg-navy-deep { background: var(--navy-deep); }
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+h2.section-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--white);
+  max-width: 620px;
+}
+.section-sub {
+  font-size: 0.9rem;
+  color: var(--mist);
+  max-width: 380px;
+}
+
+/* ============ MISSION / VISION ============ */
+.mv-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.mv-card {
+  background: var(--navy-2);
+  padding: 40px;
+  border-left: 2px solid var(--gold);
+}
+.mv-card.vision { border-left-color: var(--ice); }
+.mv-card .tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.mv-card.vision .tag { color: var(--ice); }
+.mv-card p {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: var(--white);
+}
+.values-row {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.values-row span {
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--navy-3);
+  color: var(--mist);
+  font-family: var(--font-mono);
+}
+
+/* ============ PARTNERS ============ */
+.partners-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+.partner-tile {
+  aspect-ratio: 3 / 2;
+  background: var(--navy-2);
+  border: 1px dashed var(--navy-3);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: border-color 0.2s;
+}
+.partner-tile:hover { border-color: var(--gold-dim); }
+.partner-tile svg { width: 24px; height: 24px; color: var(--navy-3); }
+.partner-tile span {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  color: var(--mist);
+  letter-spacing: 0.03em;
+}
+
+/* ============ PROGRAMS ============ */
+.phase-list { margin-top: 64px; position: relative; }
+.phase-line {
+  position: absolute;
+  top: 0; bottom: 0; left: 27px;
+  width: 1px;
+  background: linear-gradient(var(--gold), var(--navy-3));
+}
+.phase {
+  position: relative;
+  padding-left: 80px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+.phase:last-child { margin-bottom: 0; }
+.phase-num {
+  position: absolute;
+  left: 0; top: 0;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--navy-2);
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+.phase h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--white);
+}
+.phase p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: var(--mist);
+  max-width: 640px;
+  line-height: 1.6;
+}
+.phase-goal {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--ice);
+  white-space: nowrap;
+  align-self: center;
+}
+
+.delivery-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.delivery-card { background: var(--navy-2); padding: 24px; }
+.delivery-card .title { font-family: var(--font-display); font-weight: 600; color: var(--gold); }
+.delivery-card .desc { margin-top: 6px; font-size: 0.9rem; color: var(--mist); }
+
+/* ============ PARTNERSHIPS ============ */
+.workshop-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.workshop-card {
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+  padding: 28px;
+  transition: transform 0.2s;
+}
+.workshop-card:hover { transform: translateY(-4px); }
+.workshop-card h3 { font-family: var(--font-display); color: var(--gold); font-size: 1.1rem; }
+.workshop-card p { margin-top: 8px; font-size: 0.9rem; color: var(--mist); line-height: 1.6; }
+
+.gains-steps {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.gains h4, .steps h4 {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 20px;
+}
+.steps h4 { color: var(--gold); }
+.gains li {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+.gains li::before { content: "—"; color: var(--gold); }
+.steps-box {
+  background: var(--navy-2);
+  border: 1px solid var(--gold-dim);
+  padding: 32px;
+}
+.steps-box li {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+.steps-box li:last-child { margin-bottom: 0; }
+.steps-box .step-n { font-family: var(--font-mono); color: var(--gold); }
+
+/* ============ GLOBAL REACH ============ */
+.global-reach {
+  padding: 130px 0;
+  overflow: hidden;
+  text-align: center;
+}
+.global-reach .bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.12;
+}
+#network-canvas-wrap {
+  position: absolute;
+  inset: 0;
+}
+#network-canvas { width: 100%; height: 100%; }
+.global-reach .fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--navy-deep), rgba(10,22,40,0.55), var(--navy-deep));
+  pointer-events: none;
+}
+.global-reach .inner {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.global-reach h2 {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.25;
+}
+.global-reach p {
+  margin-top: 20px;
+  font-size: 1.05rem;
+  color: var(--mist);
+}
+
+/* ============ ROADMAP ============ */
+.roadmap-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.roadmap-num-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.roadmap-num { font-family: var(--font-mono); font-size: 1.4rem; color: var(--gold); }
+.roadmap-num-row .line { flex: 1; height: 1px; background: var(--navy-3); }
+.roadmap-card { background: var(--navy-2); border: 1px solid var(--navy-3); padding: 24px; height: 100%; }
+.roadmap-card .time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ice);
+}
+.roadmap-card h3 { margin-top: 8px; font-family: var(--font-display); color: var(--white); font-size: 1.1rem; }
+.roadmap-card p { margin-top: 8px; font-size: 0.88rem; color: var(--mist); }
+
+.mechanisms-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.mechanisms-grid h4 {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.mechanisms-grid li {
+  display: flex;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--mist);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.mechanisms-grid li::before { content: "·"; color: var(--gold-dim); }
+
+/* ============ TEAM ============ */
+.team-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.team-card {
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.team-card:hover { border-color: var(--gold); }
+.team-photo {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: var(--navy-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.team-photo img { width: 100%; height: 100%; object-fit: cover; }
+.team-photo span {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.team-card h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--white); }
+.team-card .role {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ice);
+}
+
+/* ============ CONTACT ============ */
+.contact-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.contact-block { margin-bottom: 48px; }
+.contact-block:last-child { margin-bottom: 0; }
+.contact-block h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--white);
+}
+.contact-block h3 svg { width: 20px; height: 20px; color: var(--gold); }
+.contact-card {
+  margin-top: 20px;
+  background: var(--navy-2);
+  border: 1px solid var(--gold-dim);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact-card .row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+.contact-card svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+
+.social-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.contact-block h3 svg,
+.contact-grid h3 svg {
+  width: 20px;
+  height: 20px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+  font-size: 0.85rem;
+  transition: border-color 0.2s;
+}
+.social-btn:hover { border-color: var(--gold); }
+.social-btn svg { width: 16px; height: 16px; color: var(--gold); }
+
+.map-box {
+  margin-top: 28px;
+  border: 1px solid var(--navy-3);
+  background: var(--navy-2);
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.map-box svg { width: 32px; height: 32px; color: var(--gold); }
+.map-box span { font-size: 0.9rem; color: var(--mist); }
+
+.enquiry-sub { margin-top: 6px; font-size: 0.9rem; color: var(--mist); }
+.form-group { margin-top: 24px; }
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--mist);
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+  color: var(--white);
+  font-size: 0.9rem;
+  border-radius: 2px;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.form-group select { border-color: var(--gold); }
+.form-group textarea { resize: none; }
+#contactForm .btn { width: 100%; margin-top: 28px; }
+#formFeedback {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--gold);
+  display: none;
+}
+
+/* ============ FOOTER ============ */
+footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--navy-3); }
+
+.newsletter-band {
+  border-bottom: 1px solid var(--navy-3);
+  padding: 48px 0;
+}
+.newsletter-band .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.newsletter-band h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--white); }
+.newsletter-band p { margin-top: 6px; font-size: 0.9rem; color: var(--mist); }
+.newsletter-form { display: flex; gap: 12px; flex-wrap: wrap; }
+.newsletter-form input {
+  width: 280px;
+  padding: 12px 16px;
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+  color: var(--white);
+  border-radius: 2px;
+}
+.newsletter-form input:focus { outline: none; border-color: var(--gold); }
+
+.footer-cols {
+  padding: 64px 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+.footer-brand .nav-logo { margin-bottom: 20px; }
+.footer-brand p {
+  font-size: 0.9rem;
+  color: var(--mist);
+  max-width: 280px;
+  line-height: 1.6;
+}
+.footer-socials {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.footer-socials a {
+  width: 36px; height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--navy-3);
+  color: var(--gold);
+  transition: border-color 0.2s;
+}
+.footer-socials a:hover { border-color: var(--gold); }
+.footer-socials svg { width: 16px; height: 16px; }
+
+.footer-cols h4 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.footer-cols li { margin-bottom: 12px; }
+.footer-cols a { font-size: 0.88rem; color: var(--mist); transition: color 0.2s; }
+.footer-cols a:hover { color: var(--gold); }
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--mist);
+}
+.footer-contact svg { width: 15px; height: 15px; color: var(--gold); margin-top: 2px; flex-shrink: 0; }
+
+.footer-bottom { border-top: 1px solid var(--navy-3); }
+.footer-bottom .container {
+  padding: 28px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.footer-bottom p { font-size: 0.75rem; color: var(--mist); }
+.footer-legal { display: flex; align-items: center; gap: 24px; }
+.footer-legal a { font-size: 0.75rem; color: var(--mist); transition: color 0.2s; }
+.footer-legal a:hover { color: var(--gold); }
+.back-to-top {
+  width: 32px; height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  transition: border-color 0.2s;
+}
+.back-to-top:hover { border-color: var(--gold); }
+.back-to-top svg { width: 16px; height: 16px; }
+
+/* ============ PRINT ============ */
+@media print {
+  header.site-nav, #matrix-canvas-wrap, #network-canvas-wrap,
+  .newsletter-band, .hero-emblem .ring-dashed { display: none !important; }
+  body, .bg-navy, .bg-navy-deep, footer.site-footer { background: #fff !important; color: #111 !important; }
+  .hero, .global-reach { padding-top: 40px !important; }
+  h2.section-title, .hero h1, h3 { color: #111 !important; }
+  .mist, .section-sub, p { color: #333 !important; }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-emblem { margin-top: 40px; }
+  .mv-grid, .contact-grid, .gains-steps { grid-template-columns: 1fr; }
+  .partners-grid { grid-template-columns: repeat(3, 1fr); }
+  .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-cols { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: block; }
+  .hero h1 { font-size: 2.4rem; }
+  .hero-stats { flex-wrap: wrap; row-gap: 20px; }
+  .delivery-grid, .workshop-grid, .mechanisms-grid, .partners-grid { grid-template-columns: 1fr 1fr; }
+  .phase { grid-template-columns: 1fr; padding-left: 0; }
+  .phase-num { position: static; margin-bottom: 12px; }
+  .phase-line { display: none; }
+  .global-reach h2 { font-size: 1.9rem; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .social-grid { grid-template-columns: 1fr 1fr; }
+  .footer-cols { grid-template-columns: 1fr; }
+}
+</style>
+<!-- ============ NAV ============ -->
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-logo">
+      <img src="logo.png" alt="Kopano Cyberpath" />
+      <span>Kopano <em>Cyberpath</em></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#mission">Mission</a>
+      <a href="#partners">Partners</a>
+      <a href="#programs">Programs</a>
+      <a href="#partnerships">Partnerships</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
     </nav>
+    <a href="#contact" class="btn btn-gold nav-cta">Partner With Us</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#mission">Mission</a>
+    <a href="#partners">Partners</a>
+    <a href="#programs">Programs</a>
+    <a href="#partnerships">Partnerships</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
   </div>
 </header>
 
-<!-- ========== HERO WITH FULL-WIDTH IMAGE ========== -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div id="matrix-canvas-wrap"><canvas id="matrix-canvas"></canvas></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-fade"></div>
+
+  <div class="container hero-inner">
+    <div>
+      <div class="eyebrow"><span>Maseru · Lesotho · Est. 2026</span></div>
+      <h1>United on every<br />path in <em>tech.</em></h1>
+      <p class="lead">
+        Kopano Cyberpath equips orphaned and underserved youth across Lesotho with
+        cybersecurity and digital skills — through education, mentorship, and
+        university collaboration — building a future-ready, tech-driven generation.
+      </p>
+      <div class="hero-actions">
+        <a href="#programs" class="btn btn-gold">Explore the Curriculum</a>
+        <a href="#partnerships" class="btn btn-outline">Partner With a University</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">12–25</div><div class="label">Ages Served</div></div>
+        <div><div class="num">4</div><div class="label">Programme Phases</div></div>
+        <div><div class="num">24mo</div><div class="label">To Regional Scale</div></div>
+      </div>
+    </div>
+    <div class="hero-emblem">
+      <div class="ring"></div>
+      <div class="ring-dashed"></div>
+      <img src="logo.png" alt="Kopano Cyberpath emblem" />
+    </div>
+  </div>
+
+  <svg class="circuit-divider" viewBox="0 0 1200 60" preserveAspectRatio="none">
+    <path d="M0,30 L200,30 L230,10 L340,10 L370,30 L560,30 L590,50 L700,50 L730,30 L900,30 L930,10 L1050,10 L1080,30 L1200,30" fill="none" stroke="#9C7A1F" stroke-width="1.5" opacity="0.55" />
+    <circle cx="200" cy="30" r="4" fill="#E4B93F" opacity="0.85" />
+    <circle cx="340" cy="10" r="4" fill="#E4B93F" opacity="0.85" />
+    <circle cx="560" cy="30" r="4" fill="#E4B93F" opacity="0.85" />
+    <circle cx="700" cy="50" r="4" fill="#E4B93F" opacity="0.85" />
+    <circle cx="900" cy="30" r="4" fill="#E4B93F" opacity="0.85" />
+    <circle cx="1050" cy="10" r="4" fill="#E4B93F" opacity="0.85" />
+  </svg>
+</section>
+
+<!-- ============ MISSION & VISION ============ -->
+<section id="mission" class="section-pad bg-navy">
   <div class="container">
-    <div class="hero-badge">UNITED ON EVERY PATH IN TECH</div>
-    <h1>Empowering Lesotho’s Youth and underprivileged communities.<br /><i>Securing Our Digital Future.</i></h1>
-    <div class="gold-underline"></div>
-    <p>We equip underserved youth with cybersecurity and digital skills through education, mentorship, campaigns and university collaborations.</p>
-    <div class="btn-group">
-      <a href="#contact" class="btn"><i class="fas fa-handshake"></i> Get Involved</a>
-      <a href="#about" class="btn btn-outline"><i class="fas fa-chevron-right"></i> Learn More</a>
+    <div class="eyebrow"><span>Why We Exist</span></div>
+    <h2 class="section-title">A movement, not just a programme.</h2>
+
+    <div class="mv-grid">
+      <div class="mv-card">
+        <div class="tag">Mission</div>
+        <p>To empower orphaned and underserved youth in Lesotho with cybersecurity and
+        digital skills through education, mentorship, and university collaborations.</p>
+      </div>
+      <div class="mv-card vision">
+        <div class="tag">Vision</div>
+        <p>A thriving Lesotho where every young person — especially orphans — can lead in
+        cybersecurity, innovation, and entrepreneurship.</p>
+      </div>
+    </div>
+
+    <div class="values-row">
+      <span>Inclusion</span>
+      <span>Equity</span>
+      <span>Innovation</span>
+      <span>Sustainability</span>
+      <span>Partnership</span>
     </div>
   </div>
 </section>
 
-<!-- ========== ABOUT ========== -->
-<section id="about" class="bg-white-soft">
+<!-- ============ PARTNERS ============ -->
+<section id="partners" class="section-pad bg-navy-deep">
   <div class="container">
-    <div class="about-grid">
-      <div class="text">
-        <span style="color:var(--gold-dark);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;font-size:0.75rem;">Who we are</span>
-        <h2><i class="fas fa-star"></i> Creating Opportunities.<br />Building Resilient Futures.</h2>
-        <p><strong>Kopano CyberPath NGO</strong> is a Lesotho‑based non‑profit committed to closing the digital skills gap. We focus on cybersecurity education, mentorship, and partnerships to create meaningful opportunities for orphaned and underserved youth.</p>
+    <div class="eyebrow"><span>Working Alongside</span></div>
+    <div class="section-head">
+      <h2 class="section-title">Building this alongside the institutions already doing the work.</h2>
+      <p class="section-sub">Universities, schools, government bodies, and companies we're partnering
+      with — growing this list as each collaboration is confirmed.</p>
+    </div>
+
+    <!-- Placeholder tiles — see assets/partners/README.txt to add real logos -->
+    <div class="partners-grid">
+      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
+      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
+      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
+      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
+      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
+      <div class="partner-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><span>Partner logo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMS ============ -->
+<section id="programs" class="section-pad bg-navy">
+  <div class="container">
+    <div class="eyebrow"><span>The Curriculum</span></div>
+    <div class="section-head">
+      <h2 class="section-title">Four phases. One path from first login to first job.</h2>
+      <p class="section-sub">Delivered in person at orphanages and community centres, hybrid where
+      connectivity allows, and via mobile labs in remote areas.</p>
+    </div>
+
+    <div class="phase-list">
+      <div class="phase-line"></div>
+
+      <div class="phase">
+        <div class="phase-num">01</div>
+        <div>
+          <h3>Digital Literacy & Basic Tech</h3>
+          <p>Computers, internet, safe browsing, file management — built on Khan Academy, Code.org, and Scratch.</p>
+        </div>
+        <div class="phase-goal">→ Build confidence and foundational skills.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">02</div>
+        <div>
+          <h3>Cybersecurity 101</h3>
+          <p>Phishing, passwords, malware, digital footprints, and privacy — taught through simulations, games, and real-world scenarios using NIST and OWASP awareness modules.</p>
+        </div>
+        <div class="phase-goal">→ Recognise and resist real threats.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">03</div>
+        <div>
+          <h3>Coding & Tech Skills</h3>
+          <p>Python, HTML/CSS, and core logic in VS Code, GitHub, and Jupyter — applied to personal websites, games, and mini apps.</p>
+        </div>
+        <div class="phase-goal">→ Ship a first real project.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">04</div>
+        <div>
+          <h3>Career & Digital Citizenship</h3>
+          <p>Resume writing, presentation skills, ethical tech, and mentorship — with optional internships alongside university partners.</p>
+        </div>
+        <div class="phase-goal">→ Walk out with a next step.</div>
+      </div>
+    </div>
+
+    <div class="delivery-grid">
+      <div class="delivery-card"><div class="title">In-Person</div><div class="desc">At orphanages and community centres</div></div>
+      <div class="delivery-card"><div class="title">Hybrid</div><div class="desc">Online plus offline, built for low bandwidth</div></div>
+      <div class="delivery-card"><div class="title">Mobile Labs</div><div class="desc">Bringing the classroom to remote areas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERSHIPS ============ -->
+<section id="partnerships" class="section-pad bg-navy-deep">
+  <div class="container">
+    <div class="eyebrow"><span>University Collaboration</span></div>
+    <h2 class="section-title">We co-host, universities co-own.</h2>
+    <p class="section-sub" style="max-width:620px;margin-top:16px;">Free workshops, mentorship, and co-developed "Tech for Youth" modules — built as a
+    two-way partnership from the first pilot onward.</p>
+
+    <div class="workshop-grid">
+      <div class="workshop-card"><h3>Hackathons for Heroes</h3><p>Students team up to solve real-world problems for their communities.</p></div>
+      <div class="workshop-card"><h3>Tech Tuesdays</h3><p>Monthly sessions held in campus halls and public libraries.</p></div>
+      <div class="workshop-card"><h3>Cyber Awareness Week</h3><p>Campus-wide campaigns promoting digital safety.</p></div>
+      <div class="workshop-card"><h3>Code for Change</h3><p>Youth-led tech projects with measurable community impact.</p></div>
+    </div>
+
+    <div class="gains-steps">
+      <div class="gains">
+        <h4>What Universities Gain</h4>
         <ul>
-          <li><i class="fas fa-check-circle"></i> Cybersecurity & digital literacy workshops</li>
-          <li><i class="fas fa-check-circle"></i> Mentorship from industry professionals</li>
-          <li><i class="fas fa-check-circle"></i> University & corporate collaborations</li>
-          <li><i class="fas fa-check-circle"></i> Safe, inclusive learning environments</li>
+          <li>Academic or co-curricular credit where possible</li>
+          <li>Guest speaking opportunities for staff and students</li>
+          <li>Joint research and capstone project support</li>
+          <li>Mentorship and internship pipelines</li>
         </ul>
-        <a href="#contact" class="btn" style="margin-top:24px;"><i class="fas fa-arrow-right"></i> Support our mission</a>
       </div>
-      <div class="about-card">
-        <h3><i class="fas fa-eye"></i> Our Vision</h3>
-        <p style="font-size:1.05rem;">Empower vulnerable youth in Lesotho with the knowledge, skills, and support they need to thrive in the digital world and become leaders in technology and cybersecurity.</p>
-        <hr style="margin:24px 0;border-color:var(--gold-light);" />
-        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-        <p>To equip orphaned and underserved youth with digital & cybersecurity skills through education, mentorship, and strong partnerships.</p>
-        <div class="gold-tags">
-          <span>#CyberSafe</span>
-          <span>#DigitalInclusion</span>
-          <span>#Lesotho</span>
+      <div class="steps">
+        <h4>First Steps</h4>
+        <div class="steps-box">
+          <ol>
+            <li><span class="step-n">01</span> Reach out to two universities for pilot workshops</li>
+            <li><span class="step-n">02</span> Draft a simple, mutual partnership agreement</li>
+            <li><span class="step-n">03</span> Host the first workshop with 10–20 students</li>
+          </ol>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== TEAM (with photo placeholders) ========== -->
-<section id="team" class="bg-white">
+<!-- ============ GLOBAL REACH ============ -->
+<section class="global-reach bg-navy-deep">
+  <img src="globe.jpeg" alt="" class="bg-img" aria-hidden="true" />
+  <div id="network-canvas-wrap"><canvas id="network-canvas"></canvas></div>
+  <div class="fade"></div>
+  <div class="container inner">
+    <div class="eyebrow" style="justify-content:center;"><span>Local Roots, Global Standard</span></div>
+    <h2>A secure bridge between Lesotho's youth and the world's tech economy.</h2>
+    <p>Every module we teach is measured against international frameworks — NIST and OWASP
+    so a student trained in Maseru is trained to a standard recognised anywhere.</p>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section id="roadmap" class="section-pad bg-navy">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-users"></i> Meet Our Team</h2>
-    <div class="gold-divider"></div>
-    <p class="section-sub">Passionate leaders driving Kopano CyberPath’s mission forward.</p>
+    <div class="eyebrow"><span>Built To Last</span></div>
+    <h2 class="section-title">Start small, grow smart, stay owned locally.</h2>
+
+    <div class="roadmap-grid">
+      <div>
+        <div class="roadmap-num-row"><span class="roadmap-num">01</span><span class="line"></span></div>
+        <div class="roadmap-card"><span class="time">0–3 months</span><h3>Launch Pilot</h3><p>1–2 orphanages + 1 university</p></div>
+      </div>
+      <div>
+        <div class="roadmap-num-row"><span class="roadmap-num">02</span><span class="line"></span></div>
+        <div class="roadmap-card"><span class="time">3–6 months</span><h3>Expand</h3><p>5–10 workshops a year, 3–5 universities</p></div>
+      </div>
+      <div>
+        <div class="roadmap-num-row"><span class="roadmap-num">03</span><span class="line"></span></div>
+        <div class="roadmap-card"><span class="time">6–12 months</span><h3>Institutionalise</h3><p>Digital learning platform + mentor network</p></div>
+      </div>
+      <div>
+        <div class="roadmap-num-row"><span class="roadmap-num">04</span></div>
+        <div class="roadmap-card"><span class="time">12–24 months</span><h3>Scale Regionally</h3><p>Launch the Lesotho Cybersecurity Academy</p></div>
+      </div>
+    </div>
+
+    <div class="mechanisms-grid">
+      <div>
+        <h4>Funding</h4>
+        <ul>
+          <li>Government & Ministry of Education grants</li>
+          <li>International donors (UNICEF, philanthropic tech funds)</li>
+          <li>Corporate sponsorships & crowdfunding</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Infrastructure</h4>
+        <ul>
+          <li>Mobile-provider data & Wi-Fi partnerships</li>
+          <li>Open-source tools to keep costs low</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ownership</h4>
+        <ul>
+          <li>Youth trained as Tech Ambassadors</li>
+          <li>Local mentors leading sessions</li>
+          <li>Alumni network for continuity</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="team" class="section-pad bg-navy-deep">
+  <div class="container">
+    <div class="eyebrow"><span>Beng Baka The Team</span></div>
+    <h2 class="section-title">Khotsong. Meet the people behind Kopano Cyberpath.</h2>
+
+    <!-- To add a photo: see assets/team/README.txt -->
     <div class="team-grid">
-
-      <!-- ********** FOR EACH TEAM MEMBER, SET src="your-photo.jpg" ********** -->
-      <div class="team-card">
-        <img src="matsoso.J" alt="Matsoso P.F" class="team-photo" />
-        <h4>Matsoso P.F</h4>
-        <div class="role">Executive Director</div>
-        <div class="bio">Overall leadership, public face, strategic direction & partner relations.</div>
-      </div>
-
-      <div class="team-card">
-        <img src="steezy.png" alt="Mathoka Teboho" class="team-photo" />
-        <h4>Mathoka Teboho</h4>
-        <div class="role">Lead Facilitator</div>
-        <div class="bio">Owns workshop curriculum, quality & facilitator team management.</div>
-      </div>
-
-      <div class="team-card">
-        <img src="https://placehold.co/100x100/c9a23d/ffffff?text=PP" alt="Panta Pii" class="team-photo" />
-        <h4>Panta Pii</h4>
-        <div class="role">Innovation & Product Lead</div>
-        <div class="bio">Explores, brainstorms and brings new tech products KOPANO can develop.</div>
-      </div>
-
-      <div class="team-card">
-        <img src="https://placehold.co/100x100/c9a23d/ffffff?text=MN" alt="Makhakhe N. Lineo" class="team-photo" />
-        <h4>Makhakhe N. Lineo</h4>
-        <div class="role">Operations Coordinator</div>
-        <div class="bio">Keeps day‑to‑day running: scheduling, comms, records & admin.</div>
-      </div>
-
-      <div class="team-card">
-        <img src="https://placehold.co/100x100/c9a23d/ffffff?text=TL" alt="Toka Lethunya" class="team-photo" />
-        <h4>Toka Lethunya</h4>
-        <div class="role">Partnerships & Growth</div>
-        <div class="bio">Builds relationships with schools, corporates, government & NGOs.</div>
-      </div>
-
-      <div class="team-card">
-        <img src="https://placehold.co/100x100/c9a23d/ffffff?text=TN" alt="Tsepheli Nichephe" class="team-photo" />
-        <h4>Tsepheli Nichephe</h4>
-        <div class="role">Finance & Fundraising</div>
-        <div class="bio">Budgeting, financial reporting, grant applications & donor relations.</div>
-      </div>
-
-      <div class="team-card">
-        <img src="https://placehold.co/100x100/c9a23d/ffffff?text=RS" alt="Ramakhupane Sekhenene" class="team-photo" />
-        <h4>Ramakhupane Sekhenene</h4>
-        <div class="role">Tech Vent & Hackathon Organiser</div>
-        <div class="bio">Plans and runs hackathons, coding competitions, and tech fairs.</div>
-      </div>
-
-      <div class="team-card">
-        <img src="https://placehold.co/100x100/c9a23d/ffffff?text=TR" alt="Thakane Rampuku" class="team-photo" />
-        <h4>Thakane Rampuku</h4>
-        <div class="role">Data Driven Strategist</div>
-        <div class="bio">Architects multi-channel campaigns with data modeling & predictive analytics.</div>
-      </div>
-
+      <div class="team-card"><div class="team-photo"><span>MP</span></div><h3>Matsoso P.F</h3><div class="role">Executive Director</div></div>
+      <div class="team-card"><div class="team-photo"><span>MT</span></div><h3>Mathoka Teboho</h3><div class="role">Lead Facilitator</div></div>
+      <div class="team-card"><div class="team-photo"><span>PP</span></div><h3>Panta Pii</h3><div class="role">Innovation & Product Lead</div></div>
+      <div class="team-card"><div class="team-photo"><span>MN</span></div><h3>Makhakhe N. Lineo</h3><div class="role">Operations Coordinator</div></div>
+      <div class="team-card"><div class="team-photo"><span>TL</span></div><h3>Toka Lethunya</h3><div class="role">Partnerships & Growth</div></div>
+      <div class="team-card"><div class="team-photo"><span>TN</span></div><h3>Tsepheli Nichephe</h3><div class="role">Finance & Fundraising</div></div>
+      <div class="team-card"><div class="team-photo"><span>RS</span></div><h3>Ramakhupane Sekhenene</h3><div class="role">Tech Event & Hackathon Organiser</div></div>
+      <div class="team-card"><div class="team-photo"><span>TR</span></div><h3>Thakane Rampuku</h3><div class="role">Data Driven Strategist</div></div>
     </div>
   </div>
 </section>
 
-<!-- ========== YOUTUBE ========== -->
-<section id="media" class="bg-white-soft">
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="section-pad bg-navy">
   <div class="container">
-    <h2 class="section-title"><i class="fab fa-youtube" style="color:var(--gold);"></i> Cybersecurity Insights</h2>
-    <div class="gold-divider"></div>
-    <p class="section-sub">Watch, learn, and stay informed with our curated content.</p>
-    <div class="youtube-grid">
-      <div class="youtube-card">
-        <iframe src="https://www.youtube.com/embed/5kC5N9bZ1-o" allowfullscreen></iframe>
-        <div class="info">
-          <h4>Cybersecurity 101 – Protecting Your Digital Life</h4>
-          <p>Essential tips to stay safe online.</p>
-        </div>
-      </div>
-      <div class="youtube-card">
-        <iframe src="https://www.youtube.com/embed/3K0R8kO_U7I" allowfullscreen></iframe>
-        <div class="info">
-          <h4>Why Cybersecurity Matters for Africa’s Youth</h4>
-          <p>Building a digital future for the next generation.</p>
-        </div>
-      </div>
-      <div class="youtube-card">
-        <iframe src="https://www.youtube.com/embed/0ZKdM5lZ4OE" allowfullscreen></iframe>
-        <div class="info">
-          <h4>Kopano CyberPath – Our Journey So Far</h4>
-          <p>Highlights from our workshops and community impact.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="eyebrow"><span>Get In Touch</span></div>
+    <h2 class="section-title">Contact Us</h2>
 
-<!-- ========== ARTICLES ========== -->
-<section id="articles" class="bg-white">
-  <div class="container">
-    <h2 class="section-title"><i class="fas fa-newspaper"></i> Latest Articles</h2>
-    <div class="gold-divider"></div>
-    <p class="section-sub">Read insights on cybersecurity, digital inclusion, and youth empowerment.</p>
-    <div class="articles-grid">
-      <div class="article-card">
-        <span class="tag"><i class="fas fa-lock"></i> Cybersecurity</span>
-        <h4>5 Common Phishing Scams in Lesotho</h4>
-        <p>How to recognise and avoid email and WhatsApp scams targeting our communities.</p>
-        <a href="#" class="read-more">Read full <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="article-card">
-        <span class="tag"><i class="fas fa-graduation-cap"></i> Education</span>
-        <h4>Digital Literacy: A Bridge to Employment</h4>
-        <p>How cybersecurity skills are opening doors for orphaned and vulnerable youth.</p>
-        <a href="#" class="read-more">Read full <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="article-card">
-        <span class="tag"><i class="fas fa-handshake"></i> Partnership</span>
-        <h4>Collaborating with Universities for Impact</h4>
-        <p>Our joint programs with higher education institutions to build a talent pipeline.</p>
-        <a href="#" class="read-more">Read full <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="article-card">
-        <span class="tag"><i class="fas fa-shield-alt"></i> Policy</span>
-        <h4>Cyber Safety for Every Child</h4>
-        <p>Advocating for safer digital spaces in Lesotho’s schools and homes.</p>
-        <a href="#" class="read-more">Read full <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== CONTACT ========== -->
-<section id="contact" class="bg-white-soft">
-  <div class="container">
-    <h2 class="section-title"><i class="fas fa-envelope"></i> Get in Touch</h2>
-    <div class="gold-divider"></div>
-    <p class="section-sub">We’d love to hear from you – reach out via email, phone, or social media.</p>
     <div class="contact-grid">
-      <div class="contact-info">
-        <h3><i class="fas fa-map-pin"></i> Our Location</h3>
-        <div class="address">
-          <p><i class="fas fa-map-marker-alt"></i> Maseru, Lesotho</p>
-          <p><i class="fas fa-envelope"></i> cyberpathngo@gmail.com </p>
-          <p><i class="fas fa-phone-alt"></i> +266 57296538 </p>
+      <!-- Left column -->
+      <div>
+        <div class="contact-block">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>Our Location</h3>
+          <div class="contact-card">
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>Maseru, Lesotho</div>
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 6.5 8 6.2 8-6.2"/></svg>cyberpathngo@gmail.com</div>
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5.5 4h3l1.4 4.2-2 1.6a12.3 12.3 0 0 0 5.3 5.3l1.6-2 4.2 1.4v3a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 4 5.6 1.5 1.5 0 0 1 5.5 4Z"/></svg>+266 5729 6538</div>
+          </div>
         </div>
-        <h3 style="margin-top:24px;"><i class="fas fa-share-alt"></i> Connect with us</h3>
-        <div class="social-links">
-          <a href="https://wa.me" target="_blank"> <i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp</a>
-          <a href="https://www.linkedin.com/company/kopano-cyberpath-ngo/" target="_blank"><i class="fab fa-linkedin-in" style="color:#0A66C2;"></i> LinkedIn</a>
-          <a href="#" target="_blank"><i class="fab fa-facebook-messenger" style="color:#0084FF;"></i> FaceTime</a>
-          <a href="#" target="_blank"><i class="fab fa-instagram" style="color:#E4405F;"></i> Instagram</a>
-          <a href="#" target="_blank"><i class="fab fa-youtube" style="color:#FF0000;"></i> YouTube</a>
-          <a href="#" target="_blank"><i class="fab fa-twitter" style="color:#1DA1F2;"></i> Twitter</a>
+
+        <div class="contact-block">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="18" cy="5" r="2.4"/><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="19" r="2.4"/><path d="M8.2 10.8 15.8 6.2M8.2 13.2l7.6 4.6"/></svg>Connect With Us</h3>
+          <div class="social-grid">
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17.5 4 20l1-3.6A7.9 7.9 0 1 1 12 20a7.9 7.9 0 0 1-5-1.8Z"/><path d="M9 9.3c0 3 2.7 5.7 5.7 5.7.6 0 1-.5.9-1.1l-.3-1.2a.9.9 0 0 0-.9-.7l-1.2.2a5 5 0 0 1-2.4-2.4l.2-1.2a.9.9 0 0 0-.7-.9L9.1 7.4c-.6-.1-1.1.3-1.1.9Z"/></svg>WhatsApp</a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M7.5 10.5v6M7.5 8v.01M11.5 16.5v-4a2 2 0 0 1 4 0v4M11.5 12.2v4.3"/></svg>LinkedIn</a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 21v-7h2.4l.4-3H14V9c0-.9.2-1.5 1.6-1.5H17V4.9A20 20 0 0 0 14.7 4.8C12.6 4.8 11 6.1 11 8.6V11H8.6v3H11v7h3Z"/></svg>Facebook</a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.9" fill="currentColor" stroke="none"/></svg>Instagram</a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="6" width="19" height="12" rx="3"/><path d="M10.5 9.5v5l4.5-2.5-4.5-2.5Z" fill="currentColor" stroke="none"/></svg>YouTube</a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5 5 19"/></svg>X</a>
+          </div>
         </div>
-        <div class="map-placeholder">
-          <i class="fas fa-map-marked-alt"></i> Maseru, Lesotho
+
+        <div class="map-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg>
+          <span>Maseru, Lesotho</span>
         </div>
       </div>
-      <div class="contact-form">
-        <h4><i class="fas fa-paper-plane" style="color:var(--gold);"></i> Send an enquiry</h4>
-        <p>We’ll get back to you within 24 hours.</p>
-        <form id="contactForm" onsubmit="handleFormSubmit(event)">
+
+      <!-- Right column -->
+      <div>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 3 3 10.5l7 2.5m11-10-4.2 17-6.8-6.5m11-10.5-11 10.5"/></svg>Send an Enquiry</h3>
+        <p class="enquiry-sub">We'll get back to you within 24 hours.</p>
+
+        <form id="contactForm">
           <div class="form-group">
-            <label for="name">Full name</label>
+            <label for="name">Full Name</label>
             <input type="text" id="name" placeholder="Your full name" required />
           </div>
           <div class="form-group">
-            <label for="email">Email address</label>
+            <label for="email">Email Address</label>
             <input type="email" id="email" placeholder="you@example.com" required />
           </div>
           <div class="form-group">
-            <label for="phone">Phone (optional)</label>
+            <label for="phone">Phone (Optional)</label>
             <input type="tel" id="phone" placeholder="+266 1234 5678" />
           </div>
           <div class="form-group">
             <label for="subject">Subject</label>
             <select id="subject">
-              <option value="general">General enquiry</option>
-              <option value="partnership">Partnership / collaboration</option>
-              <option value="volunteer">Volunteering</option>
-              <option value="workshop">Workshop participation</option>
-              <option value="donation">Donation / fundraising</option>
+              <option>General enquiry</option>
+              <option>University partnership</option>
+              <option>Volunteer / mentor</option>
+              <option>Donation / sponsorship</option>
+              <option>Media</option>
             </select>
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" placeholder="Tell us how we can help..." required></textarea>
+            <textarea id="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
           </div>
-          <button type="submit" class="btn"><i class="fas fa-envelope"></i> Send enquiry</button>
+          <button type="submit" class="btn btn-gold">Send Message</button>
+          <p id="formFeedback"></p>
         </form>
-        <div id="formFeedback" style="margin-top:18px;font-weight:500;display:none;"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
-<footer>
-  <div class="container">
-    <div class="col">
-      <h4>KOPANO CyberPath</h4>
-      <p>United on Every Path in Tech</p>
-      <p style="margin-top:8px;"><i class="fas fa-envelope"></i> info@kopanocyberpath.org.ls</p>
-      <p><i class="fas fa-phone-alt"></i> +266 1234 5678</p>
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <svg class="circuit-divider flip" viewBox="0 0 1200 60" preserveAspectRatio="none">
+    <path d="M0,30 L200,30 L230,10 L340,10 L370,30 L560,30 L590,50 L700,50 L730,30 L900,30 L930,10 L1050,10 L1080,30 L1200,30" fill="none" stroke="#9C7A1F" stroke-width="1.5" opacity="0.55" />
+    <circle cx="200" cy="30" r="4" fill="#E4B93F" opacity="0.85" />
+    <circle cx="560" cy="30" r="4" fill="#E4B93F" opacity="0.85" />
+    <circle cx="900" cy="30" r="4" fill="#E4B93F" opacity="0.85" />
+  </svg>
+
+  <div class="newsletter-band">
+    <div class="container">
+      <div>
+        <h3>Stay on the path.</h3>
+        <p>Occasional updates on workshops, hackathons, and new cohorts. No spam.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="you@example.com" required />
+        <button type="submit" class="btn btn-gold">Subscribe</button>
+      </form>
     </div>
-    <div class="col">
-      <h4>Quick links</h4>
-      <a href="#about">About</a><br />
-      <a href="#team">Our team</a><br />
-      <a href="#media">Media</a><br />
-      <a href="#articles">Articles</a><br />
-      <a href="#contact">Contact</a>
+  </div>
+
+  <div class="container footer-cols">
+    <div class="footer-brand">
+      <a href="#top" class="nav-logo">
+        <img src="logo.png" alt="Kopano Cyberpath" />
+        <span>Kopano <em>Cyberpath</em></span>
+      </a>
+      <p>Empowering orphaned and underserved youth in Lesotho with cybersecurity and
+      digital skills through education, mentorship, and university collaboration.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17.5 4 20l1-3.6A7.9 7.9 0 1 1 12 20a7.9 7.9 0 0 1-5-1.8Z"/><path d="M9 9.3c0 3 2.7 5.7 5.7 5.7.6 0 1-.5.9-1.1l-.3-1.2a.9.9 0 0 0-.9-.7l-1.2.2a5 5 0 0 1-2.4-2.4l.2-1.2a.9.9 0 0 0-.7-.9L9.1 7.4c-.6-.1-1.1.3-1.1.9Z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M7.5 10.5v6M7.5 8v.01M11.5 16.5v-4a2 2 0 0 1 4 0v4M11.5 12.2v4.3"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 21v-7h2.4l.4-3H14V9c0-.9.2-1.5 1.6-1.5H17V4.9A20 20 0 0 0 14.7 4.8C12.6 4.8 11 6.1 11 8.6V11H8.6v3H11v7h3Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="6" width="19" height="12" rx="3"/><path d="M10.5 9.5v5l4.5-2.5-4.5-2.5Z" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5 5 19"/></svg></a>
+      </div>
     </div>
-    <div class="col">
-      <h4>Partners</h4>
-      <p>Universities · Schools · Corporates · NGOs</p>
-      <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;">
-        <span style="background:rgba(201,162,61,0.15);padding:4px 16px;color:var(--gold-light);font-size:0.8rem;">NUL</span>
-        <span style="background:rgba(201,162,61,0.15);padding:4px 16px;color:var(--gold-light);font-size:0.8rem;">LCE</span>
-        <span style="background:rgba(201,162,61,0.15);padding:4px 16px;color:var(--gold-light);font-size:0.8rem;">MISA</span>
+
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#partnerships">Partnerships</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Curriculum</h4>
+      <ul>
+        <li><a href="#programs">Digital Literacy & Basic Tech</a></li>
+        <li><a href="#programs">Cybersecurity 101</a></li>
+        <li><a href="#programs">Coding & Tech Skills</a></li>
+        <li><a href="#programs">Career & Digital Citizenship</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="#partnerships">Partner With a University</a></li>
+        <li><a href="#contact">Volunteer as a Mentor</a></li>
+        <li><a href="#contact">Donate & Sponsor</a></li>
+        <li><a href="#contact">Join the Team</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-contact">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>Maseru, Lesotho</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 6.5 8 6.2 8-6.2"/></svg><a href="mailto:cyberpathngo@gmail.com">cyberpathngo@gmail.com</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5.5 4h3l1.4 4.2-2 1.6a12.3 12.3 0 0 0 5.3 5.3l1.6-2 4.2 1.4v3a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 4 5.6 1.5 1.5 0 0 1 5.5 4Z"/></svg><a href="tel:+26657296538">+266 5729 6538</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© <span id="year"></span> Kopano Cyberpath. All rights reserved. · Registered NGO, Maseru, Lesotho.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#top" class="back-to-top" aria-label="Back to top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+        </a>
       </div>
     </div>
   </div>
-  <div class="bottom container">
-    © 2025 Kopano CyberPath NGO. All rights reserved. Built with <i class="fas fa-heart"></i> for Lesotho’s youth.
-  </div>
 </footer>
 
-<!-- ========== SCRIPTS ========== -->
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 <script>
-  function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
+  /* ============ MATRIX RAIN (hero background) ============ */
+// Subtle "code rain" background for the hero — small falling glyphs in the
+// site's gold/ice palette, with an occasional dim red glyph standing in for
+// an error/exception. Respects prefers-reduced-motion.
+(function () {
+  const canvas = document.getElementById("matrix-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const CHARS = "01{}<>/#$%&*+=;:.01010110KOPANO01CYBER01PATH".split("");
+  const GOLD = "rgba(228, 185, 63, ALPHA)";
+  const ICE = "rgba(95, 208, 232, ALPHA)";
+  const MIST = "rgba(159, 176, 201, ALPHA)";
+  const ERROR_RED = "rgba(217, 90, 74, ALPHA)";
+  const ERROR_CHANCE = 0.035;
+  const FONT_SIZE = 13;
+
+  let width, height, columns, drops, speeds, raf;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize() {
+    width = canvas.clientWidth;
+    height = canvas.clientHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    columns = Math.floor(width / FONT_SIZE);
+    drops = Array.from({ length: columns }, () => Math.random() * -50);
+    speeds = Array.from({ length: columns }, () => 0.35 + Math.random() * 0.55);
   }
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('navLinks').classList.remove('open');
+
+  function pickColor() {
+    const r = Math.random();
+    if (r < ERROR_CHANCE) return ERROR_RED;
+    if (r < 0.45) return GOLD;
+    if (r < 0.75) return ICE;
+    return MIST;
+  }
+
+  function draw() {
+    ctx.fillStyle = "rgba(10, 22, 40, 0.16)";
+    ctx.fillRect(0, 0, width, height);
+    ctx.font = `${FONT_SIZE}px 'JetBrains Mono', monospace`;
+
+    for (let i = 0; i < columns; i++) {
+      const char = CHARS[Math.floor(Math.random() * CHARS.length)];
+      const x = i * FONT_SIZE;
+      const y = drops[i] * FONT_SIZE;
+      const colorTpl = pickColor();
+      const isError = colorTpl === ERROR_RED;
+      const alpha = isError ? 0.55 : 0.28 + Math.random() * 0.25;
+      ctx.fillStyle = colorTpl.replace("ALPHA", alpha.toFixed(2));
+      ctx.fillText(char, x, y);
+
+      if (y > height && Math.random() > 0.975) drops[i] = 0;
+      drops[i] += speeds[i];
+    }
+  }
+
+  function handleResize() {
+    resize();
+    if (reduceMotion) draw();
+  }
+
+  resize();
+  if (reduceMotion) {
+    draw();
+  } else {
+    (function loop() {
+      draw();
+      raf = requestAnimationFrame(loop);
+    })();
+  }
+  window.addEventListener("resize", handleResize);
+})();
+
+/* ============ NETWORK BACKGROUND (Global Reach section) ============ */
+// Slow-drifting particle network — used behind the "Global Reach" section
+// to suggest a live, connected tech network rather than a static photo.
+// Respects prefers-reduced-motion by rendering one still frame.
+(function () {
+  const canvas = document.getElementById("network-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const DOT_COLORS = ["#E4B93F", "#5FD0E8", "#9FB0C9"];
+  const LINE_COLOR = "95, 208, 232";
+  const LINK_DIST = 150;
+  const SPEED = 0.4;
+  const DENSITY = 70;
+
+  let width, height, points, raf;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize() {
+    width = canvas.clientWidth;
+    height = canvas.clientHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function makePoints() {
+    const count = Math.round((width * height) / ((1400 * 1400) / DENSITY));
+    points = Array.from({ length: Math.max(24, count) }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * SPEED,
+      vy: (Math.random() - 0.5) * SPEED,
+      r: Math.random() * 1.4 + 0.6,
+      color: DOT_COLORS[Math.floor(Math.random() * DOT_COLORS.length)],
+    }));
+  }
+
+  function step() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (const p of points) {
+      if (!reduceMotion) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+      }
+    }
+
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        const a = points[i], b = points[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < LINK_DIST) {
+          const alpha = (1 - dist / LINK_DIST) * 0.35;
+          ctx.strokeStyle = `rgba(${LINE_COLOR}, ${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (const p of points) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = 0.8;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    if (!reduceMotion) raf = requestAnimationFrame(step);
+  }
+
+  function handleResize() {
+    resize();
+    makePoints();
+    if (reduceMotion) step();
+  }
+
+  resize();
+  makePoints();
+  step();
+  window.addEventListener("resize", handleResize);
+})();
+
+/* ============ MAIN INTERACTIONS (nav + forms) ============ */
+// Mobile nav toggle
+const navToggle = document.getElementById("navToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+if (navToggle && mobileMenu) {
+  navToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("open");
+    navToggle.textContent = mobileMenu.classList.contains("open") ? "✕" : "☰";
+  });
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      navToggle.textContent = "☰";
     });
   });
+}
 
-  function handleFormSubmit(e) {
+// Contact form (front-end only for now — wire to a backend when ready)
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const feedback = document.getElementById('formFeedback');
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const msg = document.getElementById('message').value.trim();
+    const feedback = document.getElementById("formFeedback");
+    const name = document.getElementById("name").value.trim();
+    if (!name) return;
+    feedback.style.display = "block";
+    feedback.textContent = `Thank you, ${name}! Your enquiry has been noted — we'll reply soon.`;
+    contactForm.reset();
+    setTimeout(() => {
+      feedback.style.display = "none";
+    }, 6000);
+  });
+}
 
-    if (!name || !email || !msg) {
-      feedback.style.display = 'block';
-      feedback.style.color = '#b8860b';
-      feedback.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please fill in all required fields.';
-      return;
-    }
-    feedback.style.display = 'block';
-    feedback.style.color = '#1e1a16';
-    feedback.innerHTML = '<i class="fas fa-check-circle" style="color:var(--gold);"></i> Thank you, ' + name + '! Your enquiry has been sent. We’ll reply soon.';
-    document.getElementById('contactForm').reset();
-    setTimeout(() => { feedback.style.display = 'none'; }, 6000);
-  }
-
-  // Optional: if you want to keep logo upload for dev convenience, remove the click listener.
-  // For this version, we removed the user upload so you can set image src directly.
-  // The logo is now a static placeholder – replace the src attribute above.
+// Newsletter form (front-end only for now)
+const newsletterForm = document.getElementById("newsletterForm");
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = newsletterForm.querySelector("input");
+    if (!input.value.trim()) return;
+    input.value = "";
+    input.placeholder = "Thanks — you're on the list!";
+  });
+}
 </script>
-
 </body>
 </html>
