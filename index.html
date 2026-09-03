@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/style.css" />
 <style>
 /* ============ RESET & VARIABLES ============ */
+/* ============ RESET & VARIABLES ============ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -339,7 +340,7 @@ h2.section-title {
 /* Empty placeholder tile — waiting on a confirmed partner */
 .partner-tile {
   position: relative;
-  aspect-ratio: 3 / 2;
+  height: 212px;
   min-width: 0;
   background: var(--navy-2);
   border: 1px dashed var(--navy-3);
@@ -362,7 +363,7 @@ h2.section-title {
 
 /* Confirmed partner tile — logo sits on a light plate so it pops against navy */
 .partner-tile.has-logo {
-  aspect-ratio: auto;
+  height: 212px;
   gap: 0;
   padding: 0;
   min-width: 0;
@@ -387,8 +388,14 @@ h2.section-title {
   background: linear-gradient(160deg, #ffffff, #f0f0ef);
 }
 .partner-logo-plate img {
-  max-width: 100%;
-  max-height: 64px;
+  /* Hard box on both axes — every logo scales to fit this exact footprint,
+     regardless of its own width/height/aspect ratio, so a tall square mark
+     (e.g. Saba Aegis) and a wide wordmark (e.g. Linfy) end up the same
+     visual size instead of the squarer one looking "bigger". */
+  width: auto;
+  height: auto;
+  max-width: 150px;
+  max-height: 58px;
   object-fit: contain;
   filter: saturate(0.85);
   transition: filter 0.3s ease, transform 0.3s ease;
@@ -398,11 +405,16 @@ h2.section-title {
   transform: scale(1.05);
 }
 .partner-name {
-  padding: 12px 16px 16px;
+  height: 44px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
+  line-height: 1.3;
   font-family: var(--font-mono);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--gold);
   border-top: 1px solid var(--navy-3);
@@ -707,13 +719,6 @@ h2.section-title {
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
-.contact-block h3 svg,
-.contact-grid h3 svg {
-  width: 20px;
-  height: 20px;
-  color: var(--gold);
-  flex-shrink: 0;
-}
 .social-btn {
   display: flex;
   align-items: center;
@@ -724,6 +729,15 @@ h2.section-title {
   font-size: 0.85rem;
   transition: border-color 0.2s;
 }
+
+  .contact-block h3 svg,
+.contact-grid h3 svg {
+  width: 20px;
+  height: 20px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+  
 .social-btn:hover { border-color: var(--gold); }
 .social-btn svg { width: 16px; height: 16px; color: var(--gold); }
 
@@ -1038,33 +1052,47 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
       with — growing this list as each collaboration is confirmed.</p>
     </div>
 
-    <!-- ********** PARTNER LOGOS: replace src with your partner images ********** -->
-    <div class="partners-grid">
-      <div class="partner-tile">
-        <img src="linfy2.jpeg" alt="Partner 1" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+<!-- ********** PARTNER LOGOS: replace src with your partner images ********** -->
+<div class="partners-grid">
 
-      </div>
-      <div class="partner-tile">
-        <img src="pitech.jpeg" alt="Partner 2" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
-    
-      </div>
-      <div class="partner-tile">
-        <img src="pitech.jpeg" alt="Partner 3" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
-        
-      </div>
-      <div class="partner-tile">
-        <img src="partner4.png" alt="Partner 4" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
-        <span>Partner 4</span>
-      </div>
-      <div class="partner-tile">
-        <img src="partner5.png" alt="Partner 5" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
-        <span>Partner 5</span>
-      </div>
-      <div class="partner-tile">
-        <img src="partner6.png" alt="Partner 6" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
-        <span>Partner 6</span>
-      </div>
+  <div class="partner-tile has-logo">
+    <div class="partner-logo-plate">
+      <img src="linfy2.jpeg" alt="Linfy Tech Solutions" />
     </div>
+    <div class="partner-name">Linfy Tech Solutions</div>
+  </div>
+
+  <div class="partner-tile has-logo">
+    <div class="partner-logo-plate">
+      <img src="pitech.jpeg" alt="pi-tech" />
+    </div>
+    <div class="partner-name">pi-tech</div>
+  </div>
+
+  <!-- ⚠ this one still points at pitech.jpeg too — swap in the real Partner 3 logo -->
+  <div class="partner-tile has-logo">
+    <div class="partner-logo-plate">
+      <img src="pitech.jpeg" alt="Partner 3" />
+    </div>
+    <div class="partner-name">Partner 3</div>
+  </div>
+
+  <div class="partner-tile">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg>
+    <span>Partner logo</span>
+  </div>
+
+  <div class="partner-tile">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg>
+    <span>Partner logo</span>
+  </div>
+
+  <div class="partner-tile">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg>
+    <span>Partner logo</span>
+  </div>
+
+</div>
   </div>
 </section>
 
