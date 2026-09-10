@@ -934,6 +934,88 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
   .social-grid { grid-template-columns: 1fr 1fr; }
   .footer-cols { grid-template-columns: 1fr; }
 }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  :root {
+    --navy: #070F1E;
+    --navy-2: #0F2038;
+    --navy-3: #152A47;
+    --gold: #E4B93F;
+    --white: #F6F7FA;
+    --mist: #9FB0C9;
+ 
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+ 
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    line-height: 1.5;
+  }
+ 
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+ 
+  .section-pad { padding: 100px 0; }
+ 
+  /* ============ CORE PROGRAMS ============ */
+  .core-programs > h3 {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+  .program-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .program-card {
+    background: var(--navy-2);
+    border: 1px solid var(--navy-3);
+    padding: 28px;
+    display: flex;
+    gap: 18px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .program-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .program-card .program-num {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--gold);
+  }
+  .program-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--white);
+  }
+  .program-card p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--mist);
+  }
+ 
+  @media (max-width: 1024px) {
+    .program-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -949,20 +1031,16 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
       <a href="#mission">Mission</a>
       <a href="#partners">Partners</a>
       <a href="#programs">Programs</a>
-      <a href="#partnerships">Partnerships</a>
-      <a href="#roadmap">Roadmap</a>
       <a href="#team">Team</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="#contact" class="btn btn-gold nav-cta">Partner With Us</a>
+    <a href="#contact" class="btn btn-gold nav-cta">contact Us</a>
     <button class="nav-toggle" id="navToggle">☰</button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#mission">Mission</a>
     <a href="#partners">Partners</a>
     <a href="#programs">Programs</a>
-    <a href="#partnerships">Partnerships</a>
-    <a href="#roadmap">Roadmap</a>
     <a href="#team">Team</a>
     <a href="#contact">Contact</a>
   </div>
@@ -980,9 +1058,17 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
       <div class="eyebrow"><span>Maseru · Lesotho · Est. 2026</span></div>
       <h1>United on every<br />path in <em>tech.</em></h1>
       <p class="lead">
-        Kopano Cyberpath equips orphaned and underserved youth across Lesotho with
-        cybersecurity and digital skills — through education, mentorship, and
-        university collaboration — building a future-ready, tech-driven generation.
+        KOPANO CYBERPATH NGO is a Lesotho-based non-
+profit organisation established to open pathways into cybersecurity and technology careers for high
+school and college students across Lesotho and, through its growing partner network, the wider region.
+Many students with real aptitude and interest in ICT never get the chance to develop it, simply because
+their schools are not resourced to provide structured mentorship, specialised curriculum, or real-world
+exposure. At the same time, Lesotho currently has no formal, standardised cybersecurity training pathway
+for teachers, even as teachers are already expected to supervise learners' use of digital devices, handle
+student records, and model safe online behaviour.
+Kopano Cyberpath exists to close both gaps at once: identifying students and educators with potential in
+technology, and walking with them through mentorship, training, international cohorts, and hands-on
+opportunities until they are equipped to build, secure, and lead in the digital economy.
       </p>
       <div class="hero-actions">
         <a href="#programs" class="btn btn-gold">Explore the Curriculum</a>
@@ -1154,39 +1240,125 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
   </div>
 </section>
 
-<!-- ============ PARTNERSHIPS ============ -->
-<section id="partnerships" class="section-pad bg-navy-deep">
+<!-- ============ PROGRAMS ============ -->
+<section id="programs" class="section-pad bg-navy">
   <div class="container">
-    <div class="eyebrow"><span>University Collaboration</span></div>
-    <h2 class="section-title">We co-host, universities co-own.</h2>
-    <p class="section-sub" style="max-width:620px;margin-top:16px;">Free workshops, mentorship, and co-developed "Tech for Youth" modules — built as a
-    two-way partnership from the first pilot onward.</p>
-
-    <div class="workshop-grid">
-      <div class="workshop-card"><h3>Hackathons for Heroes</h3><p>Students team up to solve real-world problems for their communities.</p></div>
-      <div class="workshop-card"><h3>Tech Tuesdays</h3><p>Monthly sessions held in campus halls and public libraries.</p></div>
-      <div class="workshop-card"><h3>Cyber Awareness Week</h3><p>Campus-wide campaigns promoting digital safety.</p></div>
-      <div class="workshop-card"><h3>Code for Change</h3><p>Youth-led tech projects with measurable community impact.</p></div>
+    <div class="eyebrow"><span>The Curriculum</span></div>
+    <div class="section-head">
+      <h2 class="section-title">Four phases. One path from first login to first job.</h2>
+      <p class="section-sub">Delivered in person at orphanages and community centres, hybrid where
+      connectivity allows, and via mobile labs in remote areas.</p>
     </div>
-
-    <div class="gains-steps">
-      <div class="gains">
-        <h4>What Universities Gain</h4>
-        <ul>
-          <li>Academic or co-curricular credit where possible</li>
-          <li>Guest speaking opportunities for staff and students</li>
-          <li>Joint research and capstone project support</li>
-          <li>Mentorship and internship pipelines</li>
-        </ul>
+ 
+    <div class="phase-list">
+      <div class="phase-line"></div>
+ 
+      <div class="phase">
+        <div class="phase-num">01</div>
+        <div>
+          <h3>Digital Literacy & Basic Tech</h3>
+          <p>Computers, internet, safe browsing, file management — built on Khan Academy, Code.org, and Scratch.</p>
+        </div>
+        <div class="phase-goal">→ Build confidence and foundational skills.</div>
       </div>
-      <div class="steps">
-        <h4>First Steps</h4>
-        <div class="steps-box">
-          <ol>
-            <li><span class="step-n">01</span> Reach out to two universities for pilot workshops</li>
-            <li><span class="step-n">02</span> Draft a simple, mutual partnership agreement</li>
-            <li><span class="step-n">03</span> Host the first workshop with 10–20 students</li>
-          </ol>
+ 
+      <div class="phase">
+        <div class="phase-num">02</div>
+        <div>
+          <h3>Cybersecurity 101</h3>
+          <p>Phishing, passwords, malware, digital footprints, and privacy — taught through simulations, games, and real-world scenarios using NIST and OWASP awareness modules.</p>
+        </div>
+        <div class="phase-goal">→ Recognise and resist real threats.</div>
+      </div>
+ 
+      <div class="phase">
+        <div class="phase-num">03</div>
+        <div>
+          <h3>Coding & Tech Skills</h3>
+          <p>Python, HTML/CSS, and core logic in VS Code, GitHub, and Jupyter — applied to personal websites, games, and mini apps.</p>
+        </div>
+        <div class="phase-goal">→ Ship a first real project.</div>
+      </div>
+ 
+      <div class="phase">
+        <div class="phase-num">04</div>
+        <div>
+          <h3>Career & Digital Citizenship</h3>
+          <p>Resume writing, presentation skills, ethical tech, and mentorship — with optional internships alongside university partners.</p>
+        </div>
+        <div class="phase-goal">→ Walk out with a next step.</div>
+      </div>
+    </div>
+ 
+    <div class="delivery-grid">
+      <div class="delivery-card"><div class="title">In-Person</div><div class="desc">At orphanages and community centres</div></div>
+      <div class="delivery-card"><div class="title">Hybrid</div><div class="desc">Online plus offline, built for low bandwidth</div></div>
+      <div class="delivery-card"><div class="title">Mobile Labs</div><div class="desc">Bringing the classroom to remote areas</div></div>
+    </div>
+ 
+    <div class="core-programs">
+      <h3>Core Programs</h3>
+      <div class="program-grid">
+        <div class="program-card">
+          <div class="program-num">01</div>
+          <div>
+            <h4>School Partnership & Mentorship Programme</h4>
+            <p>Working with a founding group of students at partner schools — such as our proposed
+            partnership with Masitise High School — Kopano facilitators deliver local teaching and
+            mentorship, building foundational skills, discipline, and confidence in cybersecurity and
+            technology.</p>
+          </div>
+        </div>
+ 
+        <div class="program-card">
+          <div class="program-num">02</div>
+          <div>
+            <h4>International Cohort Progression</h4>
+            <p>Students who engage well and show progress are invited to join online cohorts alongside
+            peers from our partner countries — Ghana, South Africa, and India — broadening their skills
+            and their network.</p>
+          </div>
+        </div>
+ 
+        <div class="program-card">
+          <div class="program-num">03</div>
+          <div>
+            <h4>Cybersecurity Awareness Seminars for Educators</h4>
+            <p>One-day seminars for pre-service and practising teachers — such as our proposed seminar
+            for Lesotho Teaching College — covering digital footprint management, phishing and scams,
+            social media professionalism, protecting student data, misinformation, and personal
+            cybersecurity.</p>
+          </div>
+        </div>
+ 
+        <div class="program-card">
+          <div class="program-num">04</div>
+          <div>
+            <h4>High-School-Based Hackathons</h4>
+            <p>Once students have built up their skills, Kopano organises hackathons hosted at the high
+            school level, giving students a real, hands-on setting to apply what they have learned and
+            showcase their work.</p>
+          </div>
+        </div>
+ 
+        <div class="program-card">
+          <div class="program-num">05</div>
+          <div>
+            <h4>Builder-to-Defender Partnership Programme</h4>
+            <p>Alongside data, AI, and software-engineering training delivered by one of our partner
+            organisations from another region in Africa, Kopano introduces cybersecurity masterclasses,
+            secure-coding principles, and security-architecture sessions, helping learners understand
+            how to protect and secure what they build.</p>
+          </div>
+        </div>
+ 
+        <div class="program-card">
+          <div class="program-num">06</div>
+          <div>
+            <h4>Teacher Development & Digital Safety Training</h4>
+            <p>Structured orientation sessions that prepare educators to guide learners toward
+            responsible online choices while safeguarding learners' personal data and information.</p>
+          </div>
         </div>
       </div>
     </div>
