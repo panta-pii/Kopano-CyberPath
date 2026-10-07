@@ -388,18 +388,19 @@ h2.section-title {
   background: linear-gradient(160deg, #ffffff, #f0f0ef);
 }
 .partner-logo-plate img {
-  /* Hard box on both axes — every logo scales to fit this exact footprint,
+    /* Hard box on both axes — every logo scales to fit this exact footprint,
      regardless of its own width/height/aspect ratio, so a tall square mark
      (e.g. Saba Aegis) and a wide wordmark (e.g. Linfy) end up the same
      visual size instead of the squarer one looking "bigger". */
-  width: auto;
-  height: auto;
-  max-width: 30px;
-  max-height: 30px;
+  width: 70px;
+  height: 40px;
+  max-width: 70px;
+  max-height: 40px;
   object-fit: contain;
   filter: saturate(0.85);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
+
 .partner-tile.has-logo:hover .partner-logo-plate img {
   filter: saturate(1.15);
   transform: scale(1.05);
