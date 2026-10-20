@@ -1018,6 +1018,75 @@ footer.site-footer { background: var(--navy-deep); border-top: 1px solid var(--n
     .program-grid { grid-template-columns: 1fr; }
   }
 </style>
+<style>
+/* ============ CURRICULUM LEVELS & SKILLS TEAMS (added) ============ */
+#curriculum-levels .container { max-width: 1400px; }
+.cl-cols { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); }
+.cl-col { padding: 0 28px; border-left: 1px solid var(--navy-3); scroll-margin-top: 100px; min-width: 0; }
+.cl-col:first-child { padding-left: 0; border-left: 0; }
+.cl-col:last-child { padding-right: 0; }
+.cl-title { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.3; margin: 14px 0 10px; color: var(--white); font-weight: 600; }
+.cl-blurb { color: var(--mist); font-size: 0.95rem; margin-bottom: 32px; }
+.cl-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+.cl-tab {
+  font-family: var(--font-mono); font-size: 0.75rem; background: none; color: var(--mist);
+  border: 1px solid var(--navy-3); padding: 6px 12px; cursor: pointer; border-radius: 99px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.cl-tab:hover, .cl-tab:focus-visible { color: var(--gold); border-color: var(--gold); outline: none; }
+.cl-tab.on { background: var(--gold); color: var(--navy-deep); border-color: var(--gold); }
+.cl-panel[hidden] { display: none; }
+.cl-phase { border-top: 1px solid var(--navy-3); }
+.cl-panel .cl-phase:last-child { border-bottom: 1px solid var(--navy-3); }
+.cl-phase summary {
+  display: grid; grid-template-columns: 44px 1fr 20px; gap: 14px; align-items: center;
+  padding: 18px 0; cursor: pointer; list-style: none;
+}
+.cl-phase summary::-webkit-details-marker { display: none; }
+.cl-phase summary::after { content: "+"; color: var(--gold); font-family: var(--font-mono); font-size: 22px; text-align: center; }
+.cl-phase[open] summary::after { content: "\2212"; }
+.cl-phase summary:hover h4, .cl-phase summary:focus-visible h4 { color: var(--gold); }
+.cl-phase summary:focus-visible { outline: 1px solid var(--gold); }
+.cl-num {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); background: var(--navy-2);
+  color: var(--gold); display: grid; place-items: center; font-family: var(--font-mono); font-size: 0.85rem;
+}
+.cl-phase h4 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.3; color: var(--white); font-weight: 600; transition: color 0.2s; }
+.cl-goal { margin-top: 4px; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ice); }
+.cl-body { padding: 0 34px 22px 58px; }
+.cl-body p { margin: 0 0 14px; color: var(--mist); font-size: 0.95rem; line-height: 1.6; }
+.cl-lbl { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.cl-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.cl-tools span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--white); border: 1px solid var(--navy-3); padding: 2px 10px; border-radius: 99px; }
+
+.st-shared {
+  margin-top: 56px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  padding: 22px 0; border-top: 1px solid var(--navy-3); border-bottom: 1px solid var(--navy-3); margin-bottom: 24px;
+}
+.st-shared .st-lbl { font-family: var(--font-mono); color: var(--ice); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; margin-right: 12px; }
+.st-shared .st-chip { font-size: 0.9rem; border: 1px solid var(--gold); color: var(--gold); padding: 3px 14px; border-radius: 99px; }
+.st-cluster { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; padding: 40px 0; border-bottom: 1px solid var(--navy-3); }
+.st-cluster:last-child { border-bottom: 0; }
+.st-cluster h3 { font-family: var(--font-display); font-size: 1.8rem; margin: 0 0 10px; line-height: 1.2; color: var(--white); }
+.st-pw { color: var(--mist); margin: 0 0 14px; }
+.st-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; background: var(--gold); color: var(--navy-deep); padding: 2px 10px; margin-bottom: 12px; }
+.st-leads { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ice); }
+.st-grp { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--navy-3); }
+.st-grp:first-child { border-top: 0; padding-top: 0; }
+.st-grp h4 { margin: 4px 0 0; font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold); font-weight: 500; }
+.st-grp .cl-tools span { font-size: 0.8rem; padding: 3px 12px; }
+
+@media (max-width: 1000px) {
+  .cl-cols { grid-template-columns: 1fr; }
+  .cl-col, .cl-col:first-child, .cl-col:last-child { padding: 40px 0; border-left: 0; border-top: 1px solid var(--navy-3); }
+  .cl-col:first-child { border-top: 0; padding-top: 0; }
+}
+@media (max-width: 800px) {
+  .st-cluster { grid-template-columns: 1fr; gap: 20px; }
+  .st-grp { grid-template-columns: 1fr; gap: 8px; }
+  .cl-body { padding: 0 0 22px 0; }
+}
+</style>
 </head>
 <body>
 <!-- ============ NAV ============ -->
@@ -1315,6 +1384,30 @@ opportunities until they are equipped to build, secure, and lead in the digital 
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ CURRICULUM LEVELS (Entry / Intermediate / Advanced) ============ -->
+<section id="curriculum-levels" class="section-pad bg-navy-deep">
+  <div class="container">
+    <div class="eyebrow"><span>The Curriculum</span></div>
+    <div class="section-head">
+      <h2 class="section-title">Three levels. One path from first login to first job.</h2>
+      <p class="section-sub">Start where you are. Every level offers three tracks (Cybersecurity, AI, Data &amp; ML, and Software Engineering &amp; Web), each with four phases that build on one another. Tap a phase to open its details and working skills.</p>
+    </div>
+    <div class="cl-cols" id="curriculumLevelsRoot"></div>
+  </div>
+</section>
+
+<!-- ============ SKILLS TEAMS ============ -->
+<section id="skills-teams" class="section-pad bg-navy">
+  <div class="container">
+    <div class="eyebrow"><span>The Team</span></div>
+    <div class="section-head">
+      <h2 class="section-title">Three teams. One bench of working skills.</h2>
+      <p class="section-sub">Cybersecurity leads, backed by AI &amp; Data and Software Engineering. Skills every team shares are listed once below.</p>
+    </div>
+    <div id="skillsTeamsRoot"></div>
   </div>
 </section>
 
@@ -1800,6 +1893,133 @@ opportunities until they are equipped to build, secure, and lead in the digital 
       input.placeholder = "Thanks — you're on the list!";
     });
   }
+</script>
+<script>
+/* ============ CURRICULUM LEVELS & SKILLS TEAMS (added) ============ */
+(function () {
+const levels=[
+{id:'entry',tag:'THE CURRICULUM · ENTRY LEVEL',title:'Four phases. One path from first login to first job.',blurb:'For learners with no prior experience. Delivered in person at orphanages and community centres, hybrid where connectivity allows, and via mobile labs in remote areas.',phases:[
+['Digital Literacy & Basic Tech','Computers, internet, safe browsing, file management built on Khan Academy, Code.org, and Scratch.','Build confidence and foundational skills.',['Networking','Cisco','Linux','Web Design','IoT']],
+['Cybersecurity 101','Phishing, passwords, malware, digital footprints, and privacy taught through simulations, games, and real-world scenarios using NIST and OWASP awareness modules.','Recognise and resist real threats.',['Network Security','Firewalls','Policies']],
+['Coding & Tech Skills','Python, HTML/CSS, and core logic in VS Code, GitHub, and Jupyter applied to personal websites, games, and mini apps.','Ship a first real project.',['Python','OOP','Git / GitHub','Web Dev']],
+['Career & Digital Citizenship','Resume writing, presentation skills, ethical tech, and mentorship with optional internships alongside university partners.','Walk out with a next step.',['Project Management','Data Analysis']]],ai:[
+['Data Basics & Spreadsheets','Collect, clean and chart simple data in spreadsheets, and learn what data is and why it matters.','Make sense of numbers.',['Data Analysis','Databases']],
+['Meet AI','What AI is, how machines learn, and hands-on demos with beginner-friendly tools, including bias and ethics.','Understand how machines learn.',['AI / ML']],
+['Python for Data','Python basics, lists and loops, then charts from a real dataset in Jupyter.','Analyse your first dataset.',['Python','Data Science']],
+['Your First Mini Model','Train a tiny classifier (KNN) on a simple dataset and present the results to your group.','Teach a computer something.',['KNN','Project Management']]],
+web:[
+['How the Web Works','Browsers, servers, links and URLs, with a first page built in HTML.','Build your first web page.',['Web Design','Networking']],
+['HTML & CSS Styling','Layouts, colours, fonts and responsive design for phones and desktops.','Make it look good.',['Web Design','Web Dev']],
+['Logic & Git','Variables, conditions and loops in Python, and saving work with Git and GitHub.','Think like a programmer.',['Python','OOP','Git / GitHub']],
+['Launch a Personal Site','Publish a personal website or mini app and present it to peers.','Ship it online.',['Web Dev','Git / GitHub']]]},
+{id:'intermediate',tag:'THE CURRICULUM · INTERMEDIATE',title:'Four phases. From curious user to capable builder.',blurb:'For learners who finished the entry track or already know the basics. Hands-on labs and guided practice, with real tools in safe, isolated environments.',phases:[
+['Networks & Systems Fundamentals','How data moves: IP addressing, DNS, ports, and protocols. Learn the Linux command line and inspect real traffic with Wireshark. Get started with cloud on Azure.','Understand how the internet really works.',['Network Infrastructure','Linux','Cloud','Azure']],
+['Python for Security','Automate everyday tasks with scripts, parse logs, work with APIs, and learn the OWASP Top 10 through small secure-coding exercises. Train simple models (SVM, KNN, Naive Bayes) to flag phishing.','Write tools that save time.',['Python','Bash','Flask','FastAPI','AI / ML','SVM','KNN','Naive Bayes']],
+['Defensive Security','Log analysis, SIEM basics, vulnerability scanning, system hardening, and a step-by-step incident response playbook.','Spot, triage, and respond to incidents.',['Vulnerability Assessment','SOC Operations','Incident Response','Active Directory & IAM']],
+['CTFs & Portfolio','Weekly capture-the-flag challenges, a home lab build, a public portfolio of web and Android projects, and CompTIA Security+ exam preparation.','Prove your skills in public.',['Next.js','PHP & MySQL','Databases','MySQL','Java','Android']]],ai:[
+['Statistics & Data Analysis','Pandas, visualisation and statistics to explore real datasets and find patterns.','Find the story in data.',['Data Analysis','Python']],
+['Machine Learning Foundations','Classic algorithms with scikit-learn: SVM, KNN and Naive Bayes, plus model evaluation.','Build and test models.',['AI / ML','SVM','KNN','Naive Bayes']],
+['Databases & SQL','Design schemas and write queries on MySQL and PostgreSQL, then connect them to Python.','Store and query data.',['Databases','MySQL','PostgreSQL']],
+['Applied Data Project','Clean data, train a model and present findings in a notebook-based portfolio project.','Publish a data project.',['Data Science','Git / GitHub']]],
+web:[
+['Front-End Foundations','Responsive layouts, JavaScript basics and building interfaces with Next.js.','Build interactive pages.',['Web Dev','Next.js','Web Design']],
+['Back-End with Python','Build APIs and server logic with Flask and FastAPI, backed by a database.','Power a site with an API.',['Python','Flask','FastAPI','MySQL']],
+['Mobile & Java','Object-oriented programming in Java and a first Android app.','Build your first app.',['Java','OOP','Android']],
+['Full-Stack Project','Plan, build and ship a web or mobile project with PHP & MySQL or Python, using Git workflows.','Ship a team project.',['PHP & MySQL','Git / GitHub','Software Engineering']]]},
+{id:'advanced',tag:'THE CURRICULUM · ADVANCED',title:'Four phases. From builder to industry professional.',blurb:'For learners ready for industry-level work. Specialist tracks, real client scenarios, and direct mentorship from partner professionals and university faculty.',phases:[
+['Ethical Hacking & Pen Testing','Penetration testing methodology, reconnaissance, web and network exploitation in legal labs (including AWS), reporting findings, and responsible disclosure.','Think like an attacker, act with ethics.',['Ethical Hacking','Penetration Testing','AWS Offensive Security']],
+['Cloud & Application Security','Identity and access management, container security, infrastructure as code, threat modelling, and security built into CI/CD pipelines, plus MLOps, distributed systems and databases.','Secure systems before they ship.',['Zero Trust Architecture','MLOps','Software Engineering','Threads / JVM','Distributed Systems','PostgreSQL','Oracle']],
+['Threat Hunting & Forensics','Run SOC operations, map attacks with MITRE ATT&CK, collect digital evidence, and analyse malware safely inside sandboxes, and use deep learning for intrusion detection.','Find threats others miss.',['Malware Analysis','ML for Intrusion Detection','AI Security','Deep Learning','Data Science','Data Mining']],
+['Capstone & Career Launch','A real capstone, with a risk and compliance review, for a partner organisation, paid internship placements, CySA+ or equivalent certification, and mentoring younger learners.','Start your career and lead others.',['Risk','Compliance','Policies']]],ai:[
+['Deep Learning','Neural networks, CNNs and sequence models, trained and tuned on real data.','Train neural networks.',['Deep Learning','AI / ML']],
+['Large-Scale Data & Systems','Distributed data processing, advanced PostgreSQL and Oracle, and designing data pipelines.','Handle data at scale.',['Distributed Systems','Oracle','PostgreSQL','Data Mining']],
+['MLOps & Cloud AI','Deploy, monitor and retrain models on Azure with automated pipelines.','Run models in production.',['MLOps','Azure','Cloud']],
+['AI Capstone & Career','A real data or AI capstone for a partner organisation, plus internships and mentoring.','Launch your AI career.',['Data Science','Project Management']]],
+web:[
+['Software Architecture','Design patterns, clean architecture, concurrency and threads on the JVM.','Design systems that last.',['Software Engineering','Threads / JVM','Java']],
+['Advanced Web & APIs','Production Next.js, FastAPI services, authentication and performance.','Build production-grade apps.',['Next.js','FastAPI','Web Dev']],
+['Mobile, Cloud & DevOps','Ship Android apps and deploy services to the cloud with CI/CD pipelines and solid network infrastructure.','Deploy and scale.',['Android','Cloud','Network Infrastructure']],
+['Capstone & Career Launch','A real build for a partner organisation, plus internships and mentoring younger learners.','Start your career and lead others.',['Project Management','Software Engineering']]]}
+];
+const shared=['Networking','Linux','Python','Cloud','Databases','AI / ML'];
+const teams=[
+{n:'Cybersecurity Team',b:'Strongest cluster',d:'Offence, defence, governance and AI security, all taught from hands-on lab work.',l:'Cybersecurity 101, Defensive Security, Ethical Hacking',g:[
+['Offensive',['Ethical Hacking','Penetration Testing','Vulnerability Assessment','AWS Offensive Security']],
+['Defensive',['SOC Operations','Incident Response','Firewalls','Malware Analysis']],
+['Identity & Architecture',['Active Directory & IAM','Zero Trust Architecture','Network Security']],
+['GRC',['Risk','Compliance','Policies']],
+['AI Security',['ML for Intrusion Detection','AI Security','MLOps']],
+['Scripting',['Bash']]]},
+{n:'AI, Data & ML Team',d:'Turns data into models and keeps the systems underneath them reliable.',l:'Python, data and AI projects',g:[
+['Machine Learning',['Deep Learning','SVM','KNN','Naive Bayes','Data Science','Data Analysis']],
+['Databases',['Oracle','MySQL','PostgreSQL']],
+['Infrastructure',['Azure','Cisco','IoT','Distributed Systems']],
+['Engineering',['OOP','Software Engineering','Project Management','Web Dev']]]},
+{n:'Software Engineering & Web Team',d:'Builds the sites, apps and tools learners ship in their first real projects.',l:'Coding & Tech Skills',g:[
+['Web',['Web Design','Next.js','Flask','FastAPI','PHP & MySQL']],
+['Mobile',['Android','Java']],
+['Core Engineering',['Software Engineering','Threads / JVM','Git / GitHub']],
+['Data & Infra',['Data Mining','Network Infrastructure']]]}
+];
+
+  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const trackNames = ["Cybersecurity", "AI \u00b7 Data \u00b7 ML", "Software & Web"];
+
+  const levelsRoot = document.getElementById("curriculumLevelsRoot");
+  if (levelsRoot) {
+    levelsRoot.innerHTML = levels.map((l) => `
+      <article class="cl-col" id="${l.id}">
+        <div class="eyebrow"><span>${esc(l.tag.split("\u00b7 ")[1])}</span></div>
+        <h3 class="cl-title">${esc(l.title)}</h3>
+        <p class="cl-blurb">${esc(l.blurb)}</p>
+        <div class="cl-tabs" role="tablist">${trackNames.map((t, k) => `<button type="button" role="tab" aria-selected="${k === 0}" class="cl-tab${k ? "" : " on"}" data-k="${k}">${esc(t)}</button>`).join("")}</div>
+        ${[l.phases, l.ai, l.web].map((arr, k) => `
+          <div class="cl-panel" role="tabpanel"${k ? " hidden" : ""}>
+            ${arr.map((p, i) => `
+              <details class="cl-phase"${i === 0 ? " open" : ""}>
+                <summary>
+                  <div class="cl-num">0${i + 1}</div>
+                  <div><h4>${esc(p[0])}</h4><div class="cl-goal">\u2192 ${esc(p[2])}</div></div>
+                </summary>
+                <div class="cl-body">
+                  <p>${esc(p[1])}</p>
+                  <div class="cl-lbl">Working skills</div>
+                  <div class="cl-tools">${p[3].map((t) => `<span>${esc(t)}</span>`).join("")}</div>
+                </div>
+              </details>`).join("")}
+          </div>`).join("")}
+      </article>`).join("");
+
+    levelsRoot.addEventListener("click", (e) => {
+      const b = e.target.closest(".cl-tab");
+      if (!b) return;
+      const col = b.closest(".cl-col");
+      col.querySelectorAll(".cl-tab").forEach((x) => {
+        x.classList.toggle("on", x === b);
+        x.setAttribute("aria-selected", x === b ? "true" : "false");
+      });
+      col.querySelectorAll(".cl-panel").forEach((p, i) => { p.hidden = String(i) !== b.dataset.k; });
+    });
+  }
+
+  const teamsRoot = document.getElementById("skillsTeamsRoot");
+  if (teamsRoot) {
+    teamsRoot.innerHTML = `
+      <div class="st-shared"><span class="st-lbl">\u2192 Shared by all teams</span>${shared.map((s) => `<span class="st-chip">${esc(s)}</span>`).join("")}</div>
+      ${teams.map((t) => `
+        <div class="st-cluster">
+          <div>
+            ${t.b ? `<span class="st-badge">${esc(t.b)}</span>` : ""}
+            <h3>${esc(t.n)}</h3>
+            <p class="st-pw">${esc(t.d)}</p>
+            <div class="st-leads">\u2192 Leads: ${esc(t.l)}</div>
+          </div>
+          <div>
+            ${t.g.map((g) => `<div class="st-grp"><h4>${esc(g[0])}</h4><div class="cl-tools">${g[1].map((s) => `<span>${esc(s)}</span>`).join("")}</div></div>`).join("")}
+          </div>
+        </div>`).join("")}`;
+  }
+})();
 </script>
 </body>
 </html>
